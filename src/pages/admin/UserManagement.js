@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import config from '../../config';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import { getToken } from '../../services/authService'; // Import getToken function
@@ -32,7 +33,7 @@ const UserManagement = () => {
       try {
         // Make the API request with the correct base URL
         console.log('Making API request to http://localhost:5000/api/users/admin/all');
-        const response = await axios.get('http://localhost:5000/api/users/admin/all', {
+        const response = await axios.get(`${config.apiUrl}/users/admin/all`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -89,6 +90,7 @@ const UserManagement = () => {
   }, [token, user?.role]);
 
   // Function is now used in openEditUserModal
+  // eslint-disable-next-line no-unused-vars
   const handleEditUser = (userId) => {
     const userToEdit = users.find(u => u._id === userId);
     if (userToEdit) {
@@ -102,7 +104,7 @@ const UserManagement = () => {
     console.log('Attempting to delete user:', userId);
     if (window.confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
       try {
-        const response = await axios.delete(`http://localhost:5000/api/users/admin/delete/${userId}`, {
+        const response = await axios.delete(`${config.apiUrl}/users/admin/delete/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -110,7 +112,7 @@ const UserManagement = () => {
           console.log('User deleted successfully:', userId);
           // Refetch users to update the list
           setLoading(true);
-          const fetchResponse = await axios.get('http://localhost:5000/api/users/admin/all', {
+          const fetchResponse = await axios.get(`${config.apiUrl}/users/admin/all`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           if (fetchResponse.data && fetchResponse.data.success && Array.isArray(fetchResponse.data.users)) {
@@ -138,7 +140,7 @@ const UserManagement = () => {
     const action = currentStatus ? 'deactivate' : 'activate';
     if (window.confirm(`Are you sure you want to ${action} this user?`)) {
       try {
-        const response = await axios.patch(`http://localhost:5000/api/users/admin/toggle-active/${userId}`, {}, {
+        const response = await axios.patch(`${config.apiUrl}/users/admin/toggle-active/${userId}`, {}, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -146,7 +148,7 @@ const UserManagement = () => {
           console.log('User status toggled successfully:', response.data.user);
           // Refetch users to update the list and reflect the change
           setLoading(true);
-          const fetchResponse = await axios.get('http://localhost:5000/api/users/admin/all', {
+          const fetchResponse = await axios.get(`${config.apiUrl}/users/admin/all`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           if (fetchResponse.data && fetchResponse.data.success && Array.isArray(fetchResponse.data.users)) {
@@ -218,7 +220,7 @@ const UserManagement = () => {
     setModalError(null); // Clear previous modal errors
     try {
       console.log('Submitting new user:', newUserData);
-      const response = await axios.post('http://localhost:5000/api/users/admin/create', newUserData, {
+      const response = await axios.post(`${config.apiUrl}/users/admin/create`, newUserData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -234,7 +236,7 @@ const UserManagement = () => {
         // setUsers(prevUsers => [...prevUsers, response.data.user]); 
         // OR, more robustly, trigger a full refetch:
         setLoading(true); // Show loading state while refetching
-        const fetchResponse = await axios.get('http://localhost:5000/api/users/admin/all', {
+        const fetchResponse = await axios.get(`${config.apiUrl}/users/admin/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (fetchResponse.data && fetchResponse.data.success && Array.isArray(fetchResponse.data.users)) {
@@ -271,7 +273,7 @@ const UserManagement = () => {
 
     try {
       console.log(`Attempting to update user: ${_id} with payload:`, updatePayload);
-      const response = await axios.put(`http://localhost:5000/api/users/admin/update/${_id}`, updatePayload, {
+      const response = await axios.put(`${config.apiUrl}/users/admin/update/${_id}`, updatePayload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -280,7 +282,7 @@ const UserManagement = () => {
       if (response.data && response.data.success) {
         console.log('User updated successfully via API:', response.data.user);
         setLoading(true);
-        const fetchResponse = await axios.get('http://localhost:5000/api/users/admin/all', {
+        const fetchResponse = await axios.get(`${config.apiUrl}/users/admin/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (fetchResponse.data && fetchResponse.data.success && Array.isArray(fetchResponse.data.users)) {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import config from '../../config';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 import InvestmentCard from '../../components/InvestmentCard'; // Import the new card component
@@ -36,7 +37,7 @@ const InvestmentPlansManager = () => {
     const fetchPlans = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('http://localhost:5000/api/investment-plans');
+        const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
         setPlans(data);
         setError(null);
       } catch (err) {
@@ -182,16 +183,16 @@ const InvestmentPlansManager = () => {
 
       if (editingPlan) {
         // Update existing plan
-        await axios.put(`http://localhost:5000/api/investment-plans/${editingPlan}`, formData);
+        await axios.put(`${config.apiUrl}/investment-plans/${editingPlan}`, formData);
         setSuccessMessage('Investment plan updated successfully!');
       } else {
         // Create new plan
-        await axios.post('http://localhost:5000/api/investment-plans', formData);
+        await axios.post(`${config.apiUrl}/investment-plans`, formData);
         setSuccessMessage('Investment plan created successfully!');
       }
 
       // Refresh plans list
-      const { data } = await axios.get('http://localhost:5000/api/investment-plans');
+      const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
       setPlans(data);
       
       // Reset form and state
@@ -215,10 +216,10 @@ const InvestmentPlansManager = () => {
     }
     
     try {
-      await axios.delete(`http://localhost:5000/api/investment-plans/${planId}`);
+      await axios.delete(`${config.apiUrl}/investment-plans/${planId}`);
       
       // Refresh plans list
-      const { data } = await axios.get('http://localhost:5000/api/investment-plans');
+      const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
       setPlans(data);
       
       setSuccessMessage('Investment plan deleted successfully!');
@@ -233,13 +234,13 @@ const InvestmentPlansManager = () => {
   // Toggle plan active status
   const toggleActive = async (plan) => {
     try {
-      await axios.put(`http://localhost:5000/api/investment-plans/${plan._id}`, {
+      await axios.put(`${config.apiUrl}/investment-plans/${plan._id}`, {
         ...plan,
         isActive: !plan.isActive
       });
       
       // Refresh plans list
-      const { data } = await axios.get('http://localhost:5000/api/investment-plans');
+      const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
       setPlans(data);
       
       setSuccessMessage(`Investment plan ${plan.isActive ? 'deactivated' : 'activated'} successfully!`);

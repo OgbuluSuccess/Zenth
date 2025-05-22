@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import config from '../../config';
 import { Line, Bar } from 'react-chartjs-2';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
@@ -77,7 +78,7 @@ const AdminDashboardNew = () => {
       try {
         setLoading(true);
         
-        const apiBaseUrl = 'http://localhost:5000/api';
+        const apiBaseUrl = '${config.apiUrl}';
         const headers = { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } };
 
         // Fetch all data in parallel for better performance

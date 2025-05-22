@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { getToken } from './authService';
+import config from '../config';
 
-const API_URL = 'http://localhost:5000/api';
+// Use the API URL from config instead of hardcoding it
+const API_URL = config.apiUrl;
 
 // Create an axios instance with default config
 const api = axios.create({

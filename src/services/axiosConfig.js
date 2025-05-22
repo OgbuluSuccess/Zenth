@@ -1,8 +1,9 @@
 import axios from 'axios';
+import config from '../config';
 
-// Create axios instance with base URL
+// Create axios instance with base URL from config
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: config.apiUrl
 });
 
 // Add request interceptor to include auth token in headers

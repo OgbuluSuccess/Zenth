@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import config from '../config';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import InvestmentCard from '../components/InvestmentCard'; // Import the reusable card component
@@ -47,7 +48,7 @@ const Home = () => {
     const fetchInvestmentPlans = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('http://localhost:5000/api/investment-plans');
+        const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
         // Only show active plans and limit to 4 for the featured section
         const activePlans = data.filter(plan => plan.isActive).slice(0, 4);
         setInvestmentPlans(activePlans);
