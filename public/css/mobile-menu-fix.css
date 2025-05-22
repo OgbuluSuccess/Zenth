@@ -1,0 +1,120 @@
+/* Mobile Menu Override Styles - AGGRESSIVE VERSION */
+
+/* Hide mobile-only elements on desktop */
+.mobile-only {
+  display: none !important;
+}
+
+/* Only apply these styles on mobile devices */
+@media only screen and (max-width: 767px) {
+  /* Target the specific mobile menu elements */
+  .breakpoint-on .classy-navbar .classy-menu,
+  .breakpoint-on .classy-menu.menu-on {
+    background: #192a56 !important;
+    background: -webkit-linear-gradient(to right, #192a56, #1c2e59) !important;
+    background: linear-gradient(to right, #192a56, #1c2e59) !important;
+    height: 100vh !important;
+    position: fixed !important;
+    width: 300px !important;
+    z-index: 9999 !important;
+  }
+
+  /* Target the classynav container */
+  .breakpoint-on .classynav,
+  .breakpoint-on .classy-menu .classynav,
+  .breakpoint-on .classy-menu.menu-on .classynav {
+    background: #192a56 !important;
+    background: -webkit-linear-gradient(to right, #192a56, #1c2e59) !important;
+    background: linear-gradient(to right, #192a56, #1c2e59) !important;
+    padding-top: 40px !important;
+  }
+
+  /* Target all navigation items */
+  .breakpoint-on .classynav ul,
+  .breakpoint-on .classynav ul li,
+  .breakpoint-on .classynav ul li a,
+  .breakpoint-on .classynav > ul > li,
+  .breakpoint-on .classynav > ul > li > a,
+  .breakpoint-on .classy-menu.menu-on .classynav ul,
+  .breakpoint-on .classy-menu.menu-on .classynav ul li,
+  .breakpoint-on .classy-menu.menu-on .classynav ul li a {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: #fff !important;
+  }
+
+  /* Target menu items specifically */
+  .breakpoint-on .classynav ul li a,
+  .breakpoint-on .classynav > ul > li > a,
+  .breakpoint-on .classy-menu.menu-on .classynav ul li a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    text-transform: uppercase !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px !important;
+    padding: 5px 20px !important;
+    color: #fff !important;
+    text-align: left !important;
+  }
+
+  /* Target dropdown menus */
+  .breakpoint-on .classynav ul li .dropdown,
+  .breakpoint-on .classy-menu.menu-on .classynav ul li .dropdown {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Target dropdown items */
+  .breakpoint-on .classynav ul li .dropdown li a,
+  .breakpoint-on .classy-menu.menu-on .classynav ul li .dropdown li a {
+    background-color: rgba(25, 42, 86, 0.8) !important;
+    color: #fff !important;
+    padding-left: 40px !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  /* Target the close icon */
+  .breakpoint-on .classycloseIcon,
+  .breakpoint-on .classy-menu.menu-on .classycloseIcon {
+    display: block !important;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 10000 !important;
+  }
+  
+  /* Show mobile-only elements on mobile */
+  .mobile-only {
+    display: block !important;
+  }
+
+  .breakpoint-on .classycloseIcon .cross-wrap span,
+  .breakpoint-on .classy-menu.menu-on .classycloseIcon .cross-wrap span {
+    background-color: #fff !important;
+  }
+
+  /* Mobile menu buttons */
+  .login-btn {
+    margin: 10px auto !important;
+    display: block !important;
+    width: 120px !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    font-size: 14px !important;
+    border-radius: 50px !important;
+  }
+  
+  /* Fix dropdown arrow */
+  .classynav ul li.has-down > a::after,
+  .classynav ul li.has-down.active > a::after {
+    display: none !important;
+  }
+  
+  /* Force all white backgrounds to be transparent */
+  .breakpoint-on .classy-menu.menu-on *:not(.login-btn):not(.cross-wrap span) {
+    background-color: transparent !important;
+  }
+}

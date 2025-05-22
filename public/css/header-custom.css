@@ -1,0 +1,136 @@
+/* Custom Header Styling */
+
+.header-area {
+  background: #192a56;
+  background: -webkit-linear-gradient(to right, #192a56, #1c2e59);
+  background: -webkit-linear-gradient(left, #192a56, #1c2e59);
+  background: linear-gradient(to right, #192a56, #1c2e59);
+}
+
+.header-area .light.classy-nav-container a {
+  color: #fff;
+}
+
+/* Ensure the logo is properly sized */
+.header-area .nav-brand img {
+  max-height: 40px;
+  margin-right: 10px;
+}
+
+/* Mobile Menu Styling - Complete Overhaul */
+.breakpoint-on .classy-navbar .classy-menu {
+  background: #192a56 !important;
+  background: -webkit-linear-gradient(to right, #192a56, #1c2e59) !important;
+  background: linear-gradient(to right, #192a56, #1c2e59) !important;
+  height: 100vh !important;
+}
+
+/* Override any white backgrounds */
+.breakpoint-on .classynav,
+.breakpoint-on .classynav ul,
+.breakpoint-on .classynav ul li,
+.breakpoint-on .classynav ul li a,
+.breakpoint-on .classynav ul li .dropdown,
+.breakpoint-on .classynav ul li .dropdown li,
+.breakpoint-on .classynav ul li .dropdown li a {
+  background-color: transparent !important;
+}
+
+/* Fix the menu items */
+.breakpoint-on .classynav > ul > li > a {
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  padding: 15px !important;
+}
+
+/* Fix dropdown items */
+.breakpoint-on .classynav ul li .dropdown {
+  box-shadow: none !important;
+  background-color: rgba(25, 42, 86, 0.8) !important;
+}
+
+.breakpoint-on .classynav ul li .dropdown li a {
+  color: #fff !important;
+  padding-left: 30px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Fix the main nav container */
+.breakpoint-on .classynav {
+  background: #192a56 !important;
+  background: -webkit-linear-gradient(to right, #192a56, #1c2e59) !important;
+  background: linear-gradient(to right, #192a56, #1c2e59) !important;
+  padding-top: 40px !important;
+}
+
+/* Fix the close icon */
+.classycloseIcon {
+  display: block !important;
+  position: absolute !important;
+  top: 15px !important;
+  right: 15px !important;
+}
+
+.classycloseIcon .cross-wrap span {
+  background-color: #fff !important;
+}
+
+/* Style the login and signup buttons */
+.login-btn {
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0 15px;
+  border-radius: 30px;
+  background: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+  height: 45px;
+  line-height: 45px;
+  margin-left: 30px;
+  display: inline-block;
+}
+
+.login-btn:hover {
+  background: linear-gradient(to left, #21d397 0%, #7450fe 100%);
+  color: #fff;
+}
+
+/* Mobile menu buttons */
+@media only screen and (max-width: 767px) {
+  .login-btn {
+    margin: 10px auto !important;
+    display: block !important;
+    width: 120px !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    font-size: 14px !important;
+    border-radius: 50px !important;
+  }
+  
+  /* Fix dropdown arrow */
+  .classynav ul li.has-down > a::after,
+  .classynav ul li.has-down.active > a::after {
+    display: none !important;
+  }
+}
+
+/* Style the mobile menu toggle */
+.navbarToggler span {
+  background-color: #fff;
+}
+
+/* Style the dropdown menus */
+.classynav ul li .dropdown {
+  background-color: #192a56;
+}
+
+.classynav ul li .dropdown li a {
+  color: #fff !important;
+}
+
+.classynav ul li .dropdown li a:hover {
+  color: #21d397 !important;
+}

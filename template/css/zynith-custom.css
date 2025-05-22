@@ -1,0 +1,301 @@
+/* 
+ * Zynith Investment Platform - Custom CSS
+ * This file contains custom styles for the Zynith Investment Platform
+ * Primary color: #21d397 (green) to #7450fe (purple) gradient
+ * Secondary color: #13287e (dark blue)
+ */
+
+/* Primary Button Styles */
+.zynith-btn-primary {
+    background-image: linear-gradient(to right, #21d397 0%, #7450fe 51%, #21d397 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    transition: 0.5s;
+    background-size: 200% auto;
+}
+
+.zynith-btn-primary:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Secondary Button Styles */
+.zynith-btn-secondary {
+    background-color: #13287e;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    transition: 0.3s;
+}
+
+.zynith-btn-secondary:hover {
+    background-color: #0e1f5e;
+    color: #fff;
+}
+
+/* Section Headings */
+.zynith-section-heading {
+    color: #13287e;
+    margin-bottom: 20px;
+}
+
+/* Card Styles */
+.zynith-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    margin-bottom: 30px;
+}
+
+.zynith-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.zynith-card-header {
+    background-image: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+    color: #fff;
+    padding: 20px;
+}
+
+.zynith-card-body {
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Investment Item Styles */
+.investment-item {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: 0.3s;
+    background-color: #fff;
+}
+
+.investment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.investment-item .investment-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+    color: #fff;
+    font-size: 24px;
+}
+
+.investment-item .investment-title {
+    color: #13287e;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.investment-item .investment-description {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Dashboard Widgets */
+.dashboard-widget {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-widget-title {
+    color: #13287e;
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #21d397;
+    padding-bottom: 10px;
+}
+
+/* Crypto Specific Elements */
+.crypto-price-up {
+    color: #21d397;
+    font-weight: bold;
+}
+
+.crypto-price-down {
+    color: #ff5e5e;
+    font-weight: bold;
+}
+
+.crypto-wallet-card {
+    background: linear-gradient(135deg, #13287e 0%, #7450fe 100%);
+    color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.crypto-wallet-address {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    word-break: break-all;
+    font-family: monospace;
+    margin-top: 10px;
+}
+
+/* Admin Dashboard Elements */
+.admin-stats-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #21d397;
+}
+
+.admin-stats-card.secondary {
+    border-left: 5px solid #7450fe;
+}
+
+.admin-stats-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #13287e;
+    margin: 10px 0;
+}
+
+/* User Profile Elements */
+.user-profile-header {
+    background-image: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+    color: #fff;
+    padding: 40px 20px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.user-profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    margin: 0 auto 15px;
+}
+
+.user-profile-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Portfolio Performance Chart */
+.portfolio-chart-container {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-chart-title {
+    color: #13287e;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Custom Toggle Switch for Light/Dark Mode */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-image: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Admin Registration Toggle */
+.admin-register-toggle {
+    margin: 15px 0;
+}
+
+.toggle-admin-section {
+    display: inline-block;
+    color: #7450fe;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.admin-register-section {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
+    border-left: 3px solid #21d397;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #21d397 0%, #7450fe 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #1cbe86 0%, #6340e0 100%);
+}

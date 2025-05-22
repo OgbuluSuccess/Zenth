@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Test</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Direct header styling */
+        .header-area {
+            background: #4834d4;
+            background: -webkit-linear-gradient(to right, #4834d4, #341f97);
+            background: linear-gradient(to right, #4834d4, #341f97);
+            padding: 20px 0;
+            color: white;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .login-btn {
+            background: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple Header Test -->
+    <header class="header-area">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <img src="img/core-img/logo.png" alt="logo">
+                    Zynith
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Investments</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                
+                <div>
+                    <a href="#" class="login-btn">Login</a>
+                    <a href="#" class="login-btn">Signup</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div style="padding: 50px; text-align: center;">
+        <h1>Header Test Page</h1>
+        <p>This page is just to test the header styling.</p>
+    </div>
+</body>
+</html>

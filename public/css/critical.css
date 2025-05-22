@@ -1,0 +1,28 @@
+/* Critical CSS that must be applied */
+
+.header-area {
+  background: #4834d4 !important;
+  background: -webkit-linear-gradient(to right, #4834d4, #341f97) !important;
+  background: linear-gradient(to right, #4834d4, #341f97) !important;
+}
+
+.classy-nav-container {
+  background-color: transparent !important;
+}
+
+.classynav ul li a {
+  color: white !important;
+}
+
+.nav-brand {
+  color: white !important;
+}
+
+.navbarToggler span {
+  background-color: white !important;
+}
+
+.login-btn {
+  color: white !important;
+  background: linear-gradient(to right, #21d397 0%, #7450fe 100%) !important;
+}

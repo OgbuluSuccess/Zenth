@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Investment Plan API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .response {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Investment Plan API</h1>
+    
+    <h2>Create Investment Plan</h2>
+    <button id="createPlan">Create Crypto Starter Plan</button>
+    
+    <div class="response">
+        <h3>Response:</h3>
+        <pre id="createResponse">Click the button to send the request...</pre>
+    </div>
+    
+    <h2>Get All Investment Plans</h2>
+    <button id="getPlans">Get All Plans</button>
+    
+    <div class="response">
+        <h3>Response:</h3>
+        <pre id="getResponse">Click the button to send the request...</pre>
+    </div>
+
+    <script>
+        document.getElementById('createPlan').addEventListener('click', async () => {
+            const createResponse = document.getElementById('createResponse');
+            createResponse.textContent = 'Sending request...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/investment-plans', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: "Crypto Starter Plan",
+                        targetAudience: "New crypto investors or those with low risk tolerance",
+                        description: "This plan is perfect for beginners, focusing on stable cryptocurrencies like Bitcoin (BTC) and Ethereum (ETH).",
+                        minimumInvestment: 500,
+                        assets: [
+                            { name: "Bitcoin", percentage: 60 },
+                            { name: "Ethereum", percentage: 40 }
+                        ],
+                        expectedReturns: "5-10% annually",
+                        riskLevel: "Low",
+                        features: ["Real-time price tracking", "Automated DCA scheduling", "Educational resources"],
+                        whyGreat: "It's accessible with a low entry point, making it easy for new users to start.",
+                        isActive: true
+                    })
+                });
+                
+                const data = await response.json();
+                createResponse.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                createResponse.textContent = 'Error: ' + error.message;
+            }
+        });
+        
+        document.getElementById('getPlans').addEventListener('click', async () => {
+            const getResponse = document.getElementById('getResponse');
+            getResponse.textContent = 'Sending request...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/investment-plans');
+                const data = await response.json();
+                getResponse.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                getResponse.textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>

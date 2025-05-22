@@ -1,0 +1,22 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Prevent horizontal scrolling on body */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ensure content doesn't cause horizontal scrolling */
+.content-container {
+  width: 100%;
+  overflow-x: hidden;
+}

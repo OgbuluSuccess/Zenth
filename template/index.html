@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Zynith Investment Platform - Explore various investment options including stocks, bonds, real estate, and cryptocurrencies">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Zynith Investment Platform</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Custom Zynith Stylesheet -->
+    <link rel="stylesheet" href="css/zynith-custom.css">
+
+</head>
+
+<body class="light-version">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="dream-load"></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area wow fadeInDown" data-wow-delay="0.2s">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="dreamNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt="logo"> Zynith</a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+                                <li><a href='index.html'>Home</a></li>
+                                <li><a href='investments.html'>Investments</a>
+                                    <ul class="dropdown">
+                                        <li><a href='stocks.html'>Stocks</a></li>
+                                        <li><a href='bonds.html'>Bonds</a></li>
+                                        <li><a href='real-estate.html'>Real Estate</a></li>
+                                        <li><a href='crypto.html'>Cryptocurrency</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href='market-overview.html'>Market Overview</a></li>
+                                <li><a href='about-us.html'>About Us</a></li>
+                                <li><a href='faq.html'>FAQ</a></li>
+                                <li><a href='contact-us.html'>Contact</a></li>
+                            </ul>
+
+                            <!-- Button -->
+                            <a href="#login-popup" class="open-popup-link btn login-btn mr-im">Log in</a>
+                            <a href="#signup-popup" class="open-signup-link btn login-btn">Signup </a>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- Login popup form  -->
+
+    <div id="login-popup" class="white-popup mfp-hide">
+      <div class="top-form-header">
+          <h4>Login Form</h4>
+      </div>
+      <form action="#" method="post" id="main_login_form" novalidate="">
+            <div class="row">
+             
+               <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="text" name="name" id="name0" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="password" name="name" id="name1" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-5 text-left ">
+                    <button type="submit" class="btn dream-btn">Login</button>
+                </div>
+                <div class="col-12 col-sm-7 text-left">
+                    <p class="mb-0 mt-10">Don't have an account? <a href="#" >Sign up</a></p>
+                </div>
+            </div>
+        </form>
+
+        <div class="other-accounts text-center">
+            <p class="w-text">Login with other account</p>
+            <div class="footer-social-info">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- signup popup form so: -->
+
+    <div id="signup-popup" class="white-popup mfp-hide">
+      <div class="top-form-header">
+          <h4>Signup Form</h4>
+      </div>
+      <form action="#" method="post" id="main_Signup_form" novalidate="">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="text" name="name" id="name3" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Name</label>
+                    </div>
+                </div>
+               <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="text" name="email" id="name4" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="text" name="username" id="username" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Username (Optional)</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="password" name="password" id="name5" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="group">
+                        <input type="password" name="confirm_password" id="name6" required="">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Confirm Password</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="admin-register-toggle">
+                        <a href="#" class="toggle-admin-section">Admin Registration</a>
+                        <div class="admin-register-section" style="display: none;">
+                            <div class="group">
+                                <input type="text" name="admin_code" id="admin_code">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Admin Code</label>
+                                <small class="text-muted">Enter code for admin access</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-5 text-left ">
+                    <button type="submit" class="btn dream-btn">Login</button>
+                </div>
+                <div class="col-12 col-sm-7 text-left">
+                    <p class="mb-0 mt-10">Don't have an account? <a href="#" >Sign up</a></p>
+                </div>
+            </div>
+        </form>
+
+        <div class="other-accounts text-center">
+            <p class="w-text">Login with other account</p>
+            <div class="footer-social-info">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ##### Welcome Area Start ##### -->
+    <section class="welcome_area demo2 flex align-items-center">
+
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Welcome Content -->
+                <div class="col-12 col-lg-6 col-md-12">
+                    <div class="welcome-content v2">
+                        <div class="promo-section">
+                            <div class="integration-link light">
+                                <span class="integration-icon">
+                                    <img src="img/svg/img-dollar.svg" width="24" height="24" alt="">
+                                </span>
+                                <span class="integration-text">Modern Investment Platform for Smart Investors</span>
+                            </div>
+                        </div>
+                        <h1 class="wow fadeInUp w-text" data-wow-delay="0.2s">Explore, Invest, and Grow Your Wealth</h1>
+                        <p class="wow fadeInUp" data-wow-delay="0.3s">Zynith offers a comprehensive investment platform with diverse options including stocks, bonds, real estate, and cryptocurrencies. Manage your portfolio, track performance, and make informed investment decisions.</p>
+                        <div class="dream-btn-group wow fadeInUp" data-wow-delay="0.4s">
+                            <a href="investments.html" class="btn dream-btn green-btn mr-3">Explore Investments</a>
+                            <a href="#signup-popup" class="btn dream-btn green-btn open-signup-link">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 col-md-12">
+                    <div class="banner-box">
+                        <img src="img/core-img/banner2.png" alt="">
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <!-- ##### Welcome Area End ##### -->
+
+    <div class="clearfix"></div>
+
+    <div class="st-bg">
+        <!-- ##### Cool Facts Area Start ##### -->
+        <div class="cool-facts-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <!-- Single Cool Fact -->
+                        <div class="single_cool_fact text-center wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="cool_fact_icon">
+                                <i class="ti-user"></i>
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="cool_fact_detail">
+                                <h3><span class="counter">3215</span>+</h3>
+                                <h2>Happy Investors</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <!-- Single Cool Fact -->
+                        <div class="single_cool_fact text-center wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="cool_fact_icon">
+                                <i class="ti-check"></i>
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="cool_fact_detail">
+                                <h3><span class="counter">784</span>K+</h3>
+                                <h2>Active Portfolios</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <!-- Single Cool Fact -->
+                        <div class="single_cool_fact text-center wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="cool_fact_icon">
+                                <i class="ti-shortcode"></i>
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="cool_fact_detail">
+                                <h3><span class="counter">13658</span>+</h3>
+                                <h2>Investments Made</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <!-- Single Cool Fact -->
+                        <div class="single_cool_fact text-center wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="cool_fact_icon">
+                                <i class="ti-cup"></i>
+                            </div>
+                            <!-- Single Cool Detail -->
+                            <div class="cool_fact_detail">
+                                <h3><span class="counter">23</span>+</h3>
+                                <h2>Years of Experience</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ##### Cool Facts Area End ##### -->
+
+        <!-- ##### About Us Area Start ##### -->
+        <section class="about-us-area section-padding-0-100 clearfix" id="about">
+            <div class="container">
+                <div class="row align-items-center">
+                    
+                    <div class="col-12 col-lg-6">
+                        <div class="welcome-meter  fadeInUp" data-wow-delay="0.7s">
+                            <img src="img/core-img/about.png" class="img-responsive center-block" alt="">
+                            <!-- client meta -->
+                            <div class="growing-company text-center mt-30  fadeInUp" data-wow-delay="0.8s">
+                                <p>* Already growing up <span class="counter">5236</span> company</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="who-we-contant mt-s">
+                            
+                            <div class="dream-dots fadeInUp" data-wow-delay="0.2s">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <h4 class=" fadeInUp" data-wow-delay="0.3s">Why Choose Zynith Investment Platform?</h4>
+                            <p class=" fadeInUp" data-wow-delay="0.4s">At Zynith, we're committed to providing a secure, transparent, and user-friendly investment experience. Our platform offers diverse investment options across multiple asset classes, including traditional investments and cryptocurrencies.</p>
+                            <p class=" fadeInUp" data-wow-delay="0.5s">With robust security features, real-time market data, and personalized portfolio management tools, we empower investors to make informed decisions and achieve their financial goals.</p>
+                            <a class="btn dream-btn mt-30 fadeInUp" data-wow-delay="0.6s" href="#">Read More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ##### About Us Area End ##### -->
+
+        <!-- ##### About Us Area Start ##### -->
+        <section class="about-us-area section-padding-0-100 clearfix">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-12 col-lg-6">
+                        <div class="who-we-contant">
+                            
+                            <div class="dream-dots fadeInUp" data-wow-delay="0.2s">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <h4 class=" fadeInUp" data-wow-delay="0.3s">Comprehensive Investment Solutions</h4>
+                            <p class=" fadeInUp" data-wow-delay="0.4s">Zynith offers a wide range of investment options to diversify your portfolio. From traditional stocks and bonds to real estate opportunities and cutting-edge cryptocurrency investments, we provide access to multiple asset classes all in one platform.</p>
+                            <p class=" fadeInUp" data-wow-delay="0.5s">Our crypto-specific features include wallet integration, real-time price tracking, and secure transaction processing. With our role-based access control system, we ensure that your investments are secure while providing you with the tools you need to succeed.</p>
+                            <a class="btn dream-btn mt-30  fadeInUp" data-wow-delay="0.6s" href="#">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="welcome-meter fadeInUp mt-s" data-wow-delay="0.7s">
+                            <img src="img/core-img/about2.png" class="center-block" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ##### About Us Area End ##### -->
+    
+
+        <section class="demo-video feat section-padding-0-100">
+        <div class="container">
+            <div class="section-heading text-center">
+                
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="d-blue fadeInUp" data-wow-delay="0.3s">See How Zynith Works</h2>
+                <p class="fadeInUp" data-wow-delay="0.4s" style="color:#888">Watch our demo video to learn how Zynith can help you build and manage your investment portfolio across multiple asset classes.</p>
+            </div>
+            <div class="row align-items-center">
+                <!-- Welcome Video Area -->
+                <div class="col-lg-6 col-md-12  col-sm-12">
+                    <div class="welcome-video-area fadeInUp" data-wow-delay="0.5s">
+                        <!-- Welcome Thumbnail -->
+                        <div class="welcome-thumb">
+                            <img src="img/bg-img/bg-4.jpg" alt="">
+                        </div>
+                        <!-- Video Icon -->
+                        <div class="video-icon">
+                            <a href="https://www.youtube.com/watch?v=gbXEPHsTkgU" class="btn dream-btn video-btn" id="videobtn"><i class="fa fa-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="services-block-four mt-s">
+                        <div class="inner-box">
+                            <div class="icon-img-box">
+                                <img src="img/icons/d1.png" alt="">
+                            </div>
+                            <h3><a href="#">Portfolio Management</a></h3>
+                            <div class="text">Track and manage your investments in real-time with our intuitive portfolio dashboard.</div>
+                            
+                        </div>
+                    </div>
+                    <div class="services-block-four">
+                        <div class="inner-box">
+                            <div class="icon-img-box">
+                                <img src="img/icons/d2.png" alt="">
+                            </div>
+                            <h3><a href="#">Crypto Integration</a></h3>
+                            <div class="text">Connect your crypto wallets and track your cryptocurrency investments alongside traditional assets.</div>
+                            
+                        </div>
+                    </div>
+                    <div class="services-block-four" style="margin-bottom:0">
+                        <div class="inner-box">
+                            <div class="icon-img-box">
+                                <img src="img/icons/d3.png" alt="">
+                            </div>
+                            <h3><a href="#">Lots of ilustration Options</a></h3>
+                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium modi.</div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- ##### Our Services Area Start ##### -->
+    <section class="our_services_area section-padding-0-70 clearfix" id="services">
+        <div class="container">
+            
+            <div class="section-heading text-center">
+                
+                <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Investment Options</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Explore our diverse range of investment opportunities designed to help you achieve your financial goals. From traditional assets to cutting-edge cryptocurrency options, we have something for every investor.</p>
+            </div>
+                
+
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-center mb-100 wow fadeInUp" data-wow-delay="0.2s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img src="img/services/1.svg" alt="">
+                        </div>
+                        <h6>Stocks</h6>
+                        <p>Invest in a carefully curated selection of stocks from top-performing companies across various sectors with potential for growth and dividends.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-center mb-100 wow wow fadeInUp" data-wow-delay="0.3s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img src="img/services/2.svg" alt="">
+                        </div>
+                        <h6>Bonds</h6>
+                        <p>Explore our range of corporate and government bonds offering stable returns and lower risk profiles for conservative investors.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-center mb-100 wow fadeInUp" data-wow-delay="0.4s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img src="img/services/3.svg" alt="">
+                        </div>
+                        <h6>Real Estate</h6>
+                        <p>Diversify your portfolio with real estate investment opportunities in residential, commercial, and industrial properties.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-center mb-100 wow fadeInUp" data-wow-delay="0.5s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img src="img/services/4.svg" alt="">
+                        </div>
+                        <h6>Cryptocurrency</h6>
+                        <p>Explore the world of digital assets with our secure cryptocurrency investment options, including Bitcoin, Ethereum, and other altcoins.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-center mb-100 wow fadeInUp" data-wow-delay="0.6s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img src="img/services/5.svg" alt="">
+                        </div>
+                        <h6>Managed Portfolios</h6>
+                        <p>Let our expert team manage your investments with professionally curated portfolios tailored to your risk profile and financial goals.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- Content -->
+                    <div class="service_single_content text-center mb-100 wow fadeInUp" data-wow-delay="0.7s">
+                        <!-- Icon -->
+                        <div class="service_icon">
+                            <img src="img/services/6.svg" alt="">
+                        </div>
+                        <h6>Retirement Planning</h6>
+                        <p>Secure your future with our specialized retirement investment plans designed to provide financial stability during your golden years.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Our Services Area End ##### -->
+
+    <div class="sh-bg">
+    <!-- ##### Our features Area start ##### -->
+    <section class="features section-padding-0-100">
+
+        <div class="section-heading text-center">
+            
+            <div class="dream-dots justify-content-center fadeInUp" data-wow-delay="0.2s">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <h2 class=" fadeInUp" data-wow-delay="0.3s">Zynith Mobile App</h2>
+            <p class=" fadeInUp" data-wow-delay="0.4s">Manage your investments on the go with our powerful mobile application. Track performance, make trades, and stay updated with real-time market data anytime, anywhere.</p>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="services-column col-lg-5 col-lg-offset-1 col-md-10 offset-md-1 col-xs-10 offset-xs-1">
+                    <!--Services Block Four-->
+                    <div class="services-block-four">
+                        <div class="inner-box">
+                            <div class="icon-box">
+                                <span class="icon ti-mobile"></span>
+                            </div>
+                            <h3><a href="#">Real-Time Portfolio Tracking</a></h3>
+                            <div class="text">Monitor your investments in real-time with comprehensive performance metrics, interactive charts, and detailed analytics to make informed decisions.</div>
+                            
+                        </div>
+                    </div>
+
+                    <!--Services Block Four-->
+                    <div class="services-block-four">
+                        <div class="inner-box">
+                            <div class="icon-box">
+                                <span class="icon ti-widget"></span>
+                            </div>
+                            <h3><a href="#">Secure Crypto Wallet Integration</a></h3>
+                            <div class="text">Connect your cryptocurrency wallets securely to track all your digital assets in one place. Our platform supports multiple blockchains and provides enhanced security features.</div>
+                        </div>
+                    </div>
+                    
+                    <!--Services Block Four-->
+                    <div class="services-block-four" style="margin-bottom:0">
+                        <div class="inner-box">
+                            <div class="icon-box">
+                                <span class="icon ti-settings"></span>
+                            </div>
+                            <h3><a href="#">Instant Notifications & Alerts</a></h3>
+                            <div class="text">Stay informed with customizable price alerts, market updates, and investment opportunities. Receive instant notifications about significant changes in your portfolio or market conditions.</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="service-img-wrapper col-lg-6 col-md-12 col-sm-12">
+                    <div class="image-box">
+                        <img src="img/phone.png" class="center-block img-responsive phone-img" alt="">
+                        <img src="img/core-img/rings-bg.png" class="center-block img-responsive rings " alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Our features Area End ##### -->
+    </div>
+
+    <!-- ##### Subscribe Area start ##### -->
+    <section class="container " style="padding-bottom: 0px" id="start">
+        <div class="subscribe">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="subscribe-wrapper">
+                        <div class="section-heading text-center">
+                            <h2 class=" fadeInUp w-text" data-wow-delay="0.3s">Subscribe to Market Insights</h2>
+                            <p class=" fadeInUp" data-wow-delay="0.4s">Stay ahead of market trends with our expert analysis, investment tips, and exclusive opportunities. Subscribe to our newsletter for regular updates delivered directly to your inbox.</p>
+                        </div>
+                        <div class="service-text">
+                            
+                            <div class="col-lg-8 col-lg-offset-2 col-md-8 offset-md-2 col-xs-12 text-center">
+                                <div class="group">
+                                    <input type="text" name="subject" required="">
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Enter your email</label>
+                                    <button class="dream-btn"><i class="fa fa-paper-plane-o"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-1 col-sm-12 text-center">
+                                <span class="telegram-text">Join our chat: </span>
+                                <a href="#" class="button"><i class="fa fa-telegram"></i>Telegram</a>
+                            </div>
+                            <div class="col-lg-5 col-sm-12 text-center">
+                                <ul class="list-unstyled list-inline social-list">
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-github-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-medium"></i></a></li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>  
+    </section>
+    <!-- ##### Subscribe Area End ##### -->
+
+    <!-- ##### FAQ & Timeline Area Start ##### -->
+    <div class="faq-timeline-area section-padding-100" id="faq">
+        <div class="container">
+            <div class="section-heading text-center">
+                
+                <div class="dream-dots justify-content-center  fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class=" fadeInUp" data-wow-delay="0.3s">Frequently Asked Questions</h2>
+                <p class=" fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 col-md-12">
+                    
+                    <div class="dream-faq-area">
+                        <dl>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.2s">What are the objectives of this startup?</dt>
+                            <dd class="wow fadeInUp" data-wow-delay="0.3s">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.3s">What is Token Sale and pre-sale?</dt>
+                            <dd>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.4s">What is the bebefits we get on contribution?</dt>
+                            <dd>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                            <!-- Single FAQ Area -->
+                            <dt class="wave wow fadeInUp" data-wow-delay="0.5s">how may I take part in pre-sale?</dt>
+                            <dd>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore omnis quaerat nostrum, pariatur ipsam sunt accusamus enim necessitatibus est fugiat, assumenda dolorem, deleniti corrupti cupiditate ipsum, dolorum voluptatum esse error?</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6">
+
+                    <img src="img/svg/faq.svg" class="img-responsive center-block" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### FAQ & Timeline Area End ##### -->
+
+
+    <!-- ##### Team Area Start ##### -->
+    <section class="our_team_area section-padding-0-70 clearfix" id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        
+                        <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Awesome Team</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member wow fadeInUp" data-wow-delay="0.2s">
+                        <!-- Image -->
+                        <div class="team-member-thumb">
+                            <img src="img/team-img/1.png" class="center-block" alt="">
+                        </div>
+                        <!-- Team Info -->
+                        <div class="team-info">
+                            <h5>Sunny khan</h5>
+                            <p>Executive Officer</p>
+                        </div>
+                        <!-- Social Icon -->
+                        <div class="team-social-icon">
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member wow fadeInUp" data-wow-delay="0.3s">
+                        <!-- Image -->
+                        <div class="team-member-thumb">
+                            <img src="img/team-img/2.png" class="center-block" alt="">
+                        </div>
+                        <!-- Team Info -->
+                        <div class="team-info">
+                            <h5>Ajoy Das</h5>
+                            <p>Business Development</p>
+                        </div>
+                        <!-- Social Icon -->
+                        <div class="team-social-icon">
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member wow fadeInUp" data-wow-delay="0.4s">
+                        <!-- Image -->
+                        <div class="team-member-thumb">
+                            <img src="img/team-img/3.png" class="center-block" alt="">
+                        </div>
+                        <!-- Team Info -->
+                        <div class="team-info">
+                            <h5>Afroza Mou</h5>
+                            <p>UX/UI Designer</p>
+                        </div>
+                        <!-- Social Icon -->
+                        <div class="team-social-icon">
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Team Member -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member wow fadeInUp" data-wow-delay="0.5s">
+                        <!-- Image -->
+                        <div class="team-member-thumb">
+                            <img src="img/team-img/4.png" class="center-block" alt="">
+                        </div>
+                        <!-- Team Info -->
+                        <div class="team-info">
+                            <h5>Lim Sarah</h5>
+                            <p>Head of Marketing</p>
+                        </div>
+                        <!-- Icon -->
+                        <div class="team-social-icon">
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### Team Area End ##### -->
+
+    <!-- ##### pricing Area start ##### -->
+    <section class="pricing section-padding-100-70" style="background: #edf6fd" id="pricing">
+        
+        <div class="container">
+            <div class="section-heading text-center">
+                
+                <div class="dream-dots justify-content-center fadeInUp" data-wow-delay="0.2s">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <h2 class="d-blue bold fadeInUp" data-wow-delay="0.3s">Our Pricing Plans</h2>
+                <p class="fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+            </div>
+            <div class="row no-gutters">
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="price_table_text">
+                            <h5>Begginer</h5>
+                            <h1>Free</h1>
+                            <p>Always</p>
+                        </div>
+                        <div class="table_text_details">
+                            <p>250GB Bandwidth</p>
+                            <p>08 Email Account</p>
+                            <p>Unlimited Database </p>
+                            <p>10GB Free Disk </p>
+                            <p>24/7 Support</p>
+                        </div>
+                        <div class="table_btn mt-50">
+                            <a href="#" class="btn dream-btn">Start</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_price_table_content active text-center wow fadeIn" data-wow-delay="0.3s">
+                        <div class="price_table_text">
+                            <h5>Business</h5>
+                            <h1>$24.99</h1>
+                            <p>Per Month</p>
+                        </div>
+                        <div class="table_text_details">
+                            <p>250GB Bandwidth</p>
+                            <p>08 Email Account</p>
+                            <p>Unlimited Database </p>
+                            <p>10GB Free Disk </p>
+                            <p>24/7 Support</p>
+                        </div>
+                        <div class="table_btn mt-50">
+                            <a href="#" class="btn dream-btn">Start</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Table -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_price_table_content text-center wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="price_table_text">
+                            <h5>professional</h5>
+                            <h1>$84.99</h1>
+                            <p>Per Month</p>
+                        </div>
+                        <div class="table_text_details">
+                            <p>250GB Bandwidth</p>
+                            <p>08 Email Account</p>
+                            <p>Unlimited Database </p>
+                            <p>10GB Free Disk </p>
+                            <p>24/7 Support</p>
+                        </div>
+                        <div class="table_btn mt-50">
+                            <a href="#" class="btn dream-btn">Start</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <!-- ##### pricing Area End ##### -->
+
+    <!-- ##### Blog Area Start ##### -->
+    <section class="our_blog_area section-padding-100-0" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        
+                        <div class="dream-dots justify-content-center  fadeInUp" data-wow-delay="0.2s">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <h2 class=" fadeInUp" data-wow-delay="0.3s">Latest News</h2>
+                        <p class=" fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <!-- Single Blog Post -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-blog-area fadeInUp" data-wow-delay="0.2s">
+                        <!-- Post Thumbnail -->
+                        <div class="blog_thumbnail">
+                            <img src="img/blog-img/1.jpg" alt="">
+                        </div>
+                        <!-- Post Content -->
+                        <div class="blog-content">
+                            
+                            
+                            <div class="post-meta mt-20">
+                                <p>By <a href="#" class="post-author">ADMIN</a> <a href="#">Apr 10, 2020</a> <a href="#" class="post-comments">7 comments</a></p>
+                            </div>
+                            <a class='post-title' href='index-single-blog.html'>
+                                <h4>How to become a successful businessman.</h4>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus fugiat at vitae, ratione sapiente repellat.</p>
+                            <a class='btn dream-btn mt-15' href='index-single-blog.html'>Read Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Blog Post -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-blog-area fadeInUp" data-wow-delay="0.3s">
+                        <!-- Post Thumbnail -->
+                        <div class="blog_thumbnail">
+                            <img src="img/blog-img/2.jpg" alt="">
+                        </div>
+                        <!-- Post Content -->
+                        <div class="blog-content">
+                            
+                            
+                            <div class="post-meta mt-20">
+                                <p>By <a href="#" class="post-author">ADMIN</a> <a href="#">Apr 10, 2020</a> <a href="#" class="post-comments">7 comments</a></p>
+                            </div>
+                            <a class='post-title' href='index-single-blog.html'>
+                                <h4>How to become a successful businessman.</h4>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus fugiat at vitae, ratione sapiente repellat.</p>
+                            <a class='btn dream-btn mt-15' href='index-single-blog.html'>Read Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Single Blog Post -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-blog-area fadeInUp" data-wow-delay="0.4s">
+                        <!-- Post Thumbnail -->
+                        <div class="blog_thumbnail">
+                            <img src="img/blog-img/3.jpg" alt="">
+                        </div>
+                        <!-- Post Content -->
+                        <div class="blog-content">
+                            
+                            
+                            <div class="post-meta mt-20">
+                                <p>By <a href="#" class="post-author">ADMIN</a> <a href="#">Apr 10, 2020</a> <a href="#" class="post-comments">7 comments</a></p>
+                            </div>
+                            <a class='post-title' href='index-single-blog.html'>
+                                <h4>How to become a successful businessman.</h4>
+                            </a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus fugiat at vitae, ratione sapiente repellat.</p>
+                            <a class='btn dream-btn mt-15' href='index-single-blog.html'>Read Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Blog Area End ##### -->
+
+    <!-- ##### Contact Area Start ##### -->
+    <section class="contact_us_area" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        
+                        <div class="dream-dots justify-content-center wow fadeInUp" data-wow-delay="0.2s">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.3s">Contact With Us</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="contact_form">
+                        <form action="#" method="post" id="main_contact_form" novalidate>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div id="success_fail_info"></div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.2s">
+                                        <input type="text" name="name" id="name7" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.3s">
+                                        <input type="text" name="email" id="email" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.4s">
+                                        <input type="text" name="subject" id="subject" required>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="group wow fadeInUp" data-wow-delay="0.5s">
+                                        <textarea name="message" id="message" required></textarea>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.6s">
+                                    <button type="submit" class="btn dream-btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Contact Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area bg-img">
+
+        <div class="footer-content-area spec">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-12 col-lg-4 col-md-6">
+                        <div class="footer-copywrite-info">
+                            <!-- Copywrite -->
+                            <div class="copywrite_text fadeInUp" data-wow-delay="0.2s">
+                                <div class="footer-logo">
+                                    <a href="#"><img src="img/core-img/logo.png" alt="logo"> Noratrix </a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit ducimus voluptatibus neque illo id repellat quisquam? Autem expedita earum quae laborum ipsum ad.</p>
+                            </div>
+                            <!-- Social Icon -->
+                            <div class="footer-social-info fadeInUp" data-wow-delay="0.4s">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-3 col-md-6">
+                        <div class="contact_info_area d-sm-flex justify-content-between">
+                            <!-- Content Info -->
+                            <div class="contact_info mt-x text-center fadeInUp" data-wow-delay="0.3s">
+                                <h5>PRIVACY & TOS</h5>
+                                <a href="#"><p>Advertiser Agreement</p></a>
+                                <a href="#"><p>Acceptable Use Policy</p></a>
+                                <a href="#"><p>Privacy Policy</p></a>
+                                <a href="#"><p>Technology Privacy</p></a>
+                                <a href="#"><p>Developer Agreement</p></a>
+                            </div>
+                        </div>
+                    </div>
+                      
+                    <div class="col-12 col-lg-2 col-md-6 ">
+                        <!-- Content Info -->
+                        <div class="contact_info_area d-sm-flex justify-content-between">
+                            <div class="contact_info mt-s text-center fadeInUp" data-wow-delay="0.2s">
+                                <h5>NAVIGATE</h5>
+                                <a href="#"><p>Advertisers</p></a>
+                                <a href="#"><p>Developers</p></a>
+                                <a href="#"><p>Resources</p></a>
+                                <a href="#"><p>Company</p></a>
+                                <a href="#"><p>Connect</p></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-12 col-lg-3 col-md-6 ">
+                        <div class="contact_info_area d-sm-flex justify-content-between">
+                            <!-- Content Info -->
+                            <div class="contact_info mt-s text-center fadeInUp" data-wow-delay="0.4s">
+                                <h5>CONTACT US</h5>
+                                <p>Mailing Address:xx00 E. Union Ave</p>
+                                <p>Suite 1100. Denver, CO 80237</p>
+                                <p>+999 90932 627</p>
+                                <p>support@yourdomain.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ########## All JS ########## -->
+    <!-- jQuery js -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins.js"></script>
+    <script src="js/particles.html"></script>
+    <script src="js/app.html"></script>
+    <!-- Parallax js -->
+    <script src="js/dzsparallaxer.js"></script>
+
+    <script src="js/jquery.syotimer.min.js"></script>
+
+    <!-- script js -->
+    <script src="js/script.js"></script>
+
+    <!-- Custom Zynith JavaScript -->    
+    <script src="js/zynith-custom.js"></script>
+</body>
+
+
+<!-- Mirrored from noratrix.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 May 2025 07:32:25 GMT -->
+</html>

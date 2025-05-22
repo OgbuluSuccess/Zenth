@@ -1,0 +1,595 @@
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Button, Tabs, Tab, Form, InputGroup, Dropdown, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+} from 'chart.js';
+
+// Register ChartJS components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
+
+const Dashboard = () => {
+  // App color scheme
+  const appColors = {
+    primary: '#192a56',
+    primaryGradient: 'linear-gradient(to right, #192a56, #1c2e59)',
+    secondary: '#21d397',
+    secondaryGradient: 'linear-gradient(to right, #21d397 0%, #7450fe 100%)',
+    textLight: '#ffffff',
+    textDark: '#333333',
+    chartColors: {
+      bitcoin: '#F7931A',
+      ethereum: '#627EEA',
+      xrp: '#23292F',
+      ltc: '#345D9D',
+      zec: '#ECB244'
+    }
+  };
+
+  // Cryptocurrency data
+  const [cryptoData] = useState({
+    bitcoin: { symbol: 'BTC', price: 34570, change: 4.2, history: [32500, 33100, 32800, 33500, 34200, 33900, 34570] },
+    ethereum: { symbol: 'ETH', price: 1447, change: 3.8, history: [1380, 1410, 1390, 1420, 1430, 1440, 1447] },
+    dashcoin: { symbol: 'DASH', price: 98.36, change: 2.5, history: [95.20, 96.30, 97.10, 96.80, 97.50, 98.10, 98.36] },
+    ripple: { symbol: 'XRP', price: 0.58, change: 1.2, history: [0.55, 0.56, 0.57, 0.56, 0.57, 0.58, 0.58] },
+    litecoin: { symbol: 'LTC', price: 142.30, change: 3.1, history: [135.20, 137.40, 138.90, 140.10, 141.20, 142.00, 142.30] },
+    zcash: { symbol: 'ZEC', price: 87.45, change: -0.8, history: [89.20, 88.70, 88.10, 87.80, 87.60, 87.50, 87.45] }
+  });
+
+  // Market overview data
+  const [marketData] = useState({
+    timeframe: 'month', // week, month, year
+    buyPrice: 8420.50,
+    sellPrice: 8420.50,
+    chartData: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [
+        {
+          label: 'Market Price',
+          data: [8100, 8250, 8400, 8320, 8380, 8420, 8420.50],
+          borderColor: '#21d397',
+          backgroundColor: 'rgba(33, 211, 151, 0.1)',
+          tension: 0.4,
+          fill: true
+        }
+      ]
+    }
+  });
+
+  // Order data
+  const [orderData] = useState({
+    buy: [
+      { price: 98.36, amount: 0.25, total: 24.59 },
+      { price: 98.36, amount: 0.25, total: 24.59 },
+      { price: 98.36, amount: 0.25, total: 24.59 },
+      { price: 98.36, amount: 0.25, total: 24.59 }
+    ],
+    sell: [
+      { price: 98.36, amount: 0.25, total: 24.59 },
+      { price: 98.36, amount: 0.25, total: 24.59 },
+      { price: 98.36, amount: 0.25, total: 24.59 },
+      { price: 98.36, amount: 0.25, total: 24.59 }
+    ],
+    selectedCoin: 'DASH'
+  });
+
+  // User data
+  const [userData] = useState({
+    name: 'John Doe',
+    accountBalance: 25000,
+    totalInvestment: 18500,
+    totalReturns: 3250,
+    returnPercentage: 17.57,
+    portfolioValue: 21750,
+    notifications: [
+      { id: 1, message: 'Your Bitcoin investment is up 5% today', date: '2025-05-19', read: false },
+      { id: 2, message: 'New investment opportunity: Tech Growth Fund', date: '2025-05-18', read: true },
+      { id: 3, message: 'Your monthly portfolio report is ready', date: '2025-05-17', read: true }
+    ]
+  });
+
+  // Chart options
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+          drawBorder: false,
+        },
+        ticks: {
+          color: '#aaa',
+        }
+      },
+      y: {
+        grid: {
+          color: 'rgba(255, 255, 255, 0.05)',
+          drawBorder: false,
+        },
+        ticks: {
+          color: '#aaa',
+          callback: (value) => `$${value}`
+        }
+      }
+    }
+  };
+
+  // Crypto statistics chart data
+  const cryptoStatsData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    datasets: [
+      {
+        label: 'BTC',
+        data: [29000, 32000, 31000, 34000, 33000, 36000, 34570],
+        borderColor: appColors.chartColors.bitcoin,
+        backgroundColor: 'transparent',
+        tension: 0.4,
+        borderWidth: 2
+      },
+      {
+        label: 'ETH',
+        data: [1200, 1300, 1250, 1400, 1380, 1450, 1447],
+        borderColor: appColors.chartColors.ethereum,
+        backgroundColor: 'transparent',
+        tension: 0.4,
+        borderWidth: 2
+      },
+      {
+        label: 'XRP',
+        data: [0.45, 0.50, 0.48, 0.52, 0.55, 0.57, 0.58],
+        borderColor: appColors.chartColors.xrp,
+        backgroundColor: 'transparent',
+        tension: 0.4,
+        borderWidth: 2
+      },
+      {
+        label: 'LTC',
+        data: [120, 130, 125, 135, 138, 140, 142.30],
+        borderColor: appColors.chartColors.ltc,
+        backgroundColor: 'transparent',
+        tension: 0.4,
+        borderWidth: 2
+      },
+      {
+        label: 'ZEC',
+        data: [90, 92, 89, 88, 87, 88, 87.45],
+        borderColor: appColors.chartColors.zec,
+        backgroundColor: 'transparent',
+        tension: 0.4,
+        borderWidth: 2
+      }
+    ]
+  };
+
+  // Function to format numbers with commas and 2 decimal places if needed
+  const formatNumber = (num, decimals = 2) => {
+    return num.toLocaleString(undefined, {
+      minimumFractionDigits: num % 1 === 0 ? 0 : decimals,
+      maximumFractionDigits: decimals
+    });
+  };
+
+  // Function to generate chart data for crypto cards
+  const generateCryptoChartData = (history, color) => {
+    return {
+      labels: ['', '', '', '', '', '', ''],
+      datasets: [
+        {
+          data: history,
+          borderColor: color,
+          backgroundColor: 'transparent',
+          tension: 0.4,
+          borderWidth: 2,
+          pointRadius: 0
+        }
+      ]
+    };
+  };
+
+  // Mini chart options
+  const miniChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: false }
+    },
+    scales: {
+      x: { display: false },
+      y: { display: false }
+    },
+    elements: {
+      line: { tension: 0.4 }
+    }
+  };
+
+  return (
+    <div className="dashboard-page" style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
+      {/* Header */}
+      <section style={{ background: appColors.primaryGradient, padding: '20px 0', color: appColors.textLight }}>
+        <Container>
+          <Row className="align-items-center">
+            <Col>
+              <h2 className="mb-0">Dashboard</h2>
+            </Col>
+            <Col xs="auto">
+              <InputGroup>
+                <Form.Control
+                  placeholder="Type to search..."
+                  style={{ borderRadius: '20px 0 0 20px', border: 'none' }}
+                />
+                <Button variant="light" style={{ borderRadius: '0 20px 20px 0', border: 'none' }}>
+                  <i className="fa fa-search"></i>
+                </Button>
+              </InputGroup>
+            </Col>
+            <Col xs="auto">
+              <div className="d-flex align-items-center">
+                <Button variant="link" className="text-white me-3">
+                  <i className="fa fa-envelope"></i>
+                </Button>
+                <Button variant="link" className="text-white me-3">
+                  <i className="fa fa-bell"></i>
+                </Button>
+                <span>Welcome, {userData.name}</span>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Main Content */}
+      <Container className="py-4">
+        <Row className="mb-4">
+          {/* Bitcoin Card */}
+          <Col md={4} lg={3} className="mb-4">
+            <Card className="h-100 shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none' }}>
+              <Card.Body>
+                <div className="d-flex align-items-center mb-3">
+                  <div className="crypto-icon me-2" style={{ backgroundColor: '#F7931A', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
+                    ₿
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Bitcoin</h5>
+                    <small className="text-muted">{cryptoData.bitcoin.symbol}</small>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between align-items-end">
+                  <div>
+                    <h3 className="mb-0">${formatNumber(cryptoData.bitcoin.price)}</h3>
+                    <span className={cryptoData.bitcoin.change >= 0 ? 'text-success' : 'text-danger'}>
+                      {cryptoData.bitcoin.change >= 0 ? '+' : ''}{cryptoData.bitcoin.change}% (30 days)
+                    </span>
+                  </div>
+                  <div style={{ width: '100px', height: '40px' }}>
+                    <Line 
+                      data={generateCryptoChartData(cryptoData.bitcoin.history, appColors.chartColors.bitcoin)} 
+                      options={miniChartOptions} 
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          {/* Ethereum Card */}
+          <Col md={4} lg={3} className="mb-4">
+            <Card className="h-100 shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none' }}>
+              <Card.Body>
+                <div className="d-flex align-items-center mb-3">
+                  <div className="crypto-icon me-2" style={{ backgroundColor: '#627EEA', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
+                    Ξ
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Ethereum</h5>
+                    <small className="text-muted">{cryptoData.ethereum.symbol}</small>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between align-items-end">
+                  <div>
+                    <h3 className="mb-0">${formatNumber(cryptoData.ethereum.price)}</h3>
+                    <span className={cryptoData.ethereum.change >= 0 ? 'text-success' : 'text-danger'}>
+                      {cryptoData.ethereum.change >= 0 ? '+' : ''}{cryptoData.ethereum.change}% (30 days)
+                    </span>
+                  </div>
+                  <div style={{ width: '100px', height: '40px' }}>
+                    <Line 
+                      data={generateCryptoChartData(cryptoData.ethereum.history, appColors.chartColors.ethereum)} 
+                      options={miniChartOptions} 
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          {/* Dash Coin Card */}
+          <Col md={4} lg={3} className="mb-4">
+            <Card className="h-100 shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none', backgroundColor: '#e9ffef' }}>
+              <Card.Body>
+                <div className="d-flex align-items-center mb-3">
+                  <div className="crypto-icon me-2" style={{ backgroundColor: '#008CE7', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
+                    D
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Dash Coin</h5>
+                    <small className="text-muted">{cryptoData.dashcoin.symbol}</small>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between align-items-end">
+                  <div>
+                    <h3 className="mb-0">${formatNumber(cryptoData.dashcoin.price)}</h3>
+                    <span className={cryptoData.dashcoin.change >= 0 ? 'text-success' : 'text-danger'}>
+                      {cryptoData.dashcoin.change >= 0 ? '+' : ''}{cryptoData.dashcoin.change}% (30 days)
+                    </span>
+                  </div>
+                  <div style={{ width: '100px', height: '40px' }}>
+                    <Line 
+                      data={generateCryptoChartData(cryptoData.dashcoin.history, '#008CE7')} 
+                      options={miniChartOptions} 
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          {/* Ripple Card */}
+          <Col md={4} lg={3} className="mb-4">
+            <Card className="h-100 shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none' }}>
+              <Card.Body>
+                <div className="d-flex align-items-center mb-3">
+                  <div className="crypto-icon me-2" style={{ backgroundColor: '#23292F', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
+                    X
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Ripple</h5>
+                    <small className="text-muted">{cryptoData.ripple.symbol}</small>
+                  </div>
+                </div>
+                <div className="d-flex justify-content-between align-items-end">
+                  <div>
+                    <h3 className="mb-0">${formatNumber(cryptoData.ripple.price)}</h3>
+                    <span className={cryptoData.ripple.change >= 0 ? 'text-success' : 'text-danger'}>
+                      {cryptoData.ripple.change >= 0 ? '+' : ''}{cryptoData.ripple.change}% (30 days)
+                    </span>
+                  </div>
+                  <div style={{ width: '100px', height: '40px' }}>
+                    <Line 
+                      data={generateCryptoChartData(cryptoData.ripple.history, appColors.chartColors.xrp)} 
+                      options={miniChartOptions} 
+                    />
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* Crypto Statistics Section */}
+        <Row className="mb-4">
+          <Col lg={12}>
+            <Card className="shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none', backgroundColor: appColors.primary, color: 'white' }}>
+              <Card.Body>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h5 className="mb-0">Crypto Statistics</h5>
+                  <div>
+                    <Button variant="link" className="text-white" style={{ textDecoration: 'none' }}>
+                      <i className="fa fa-ellipsis-h"></i>
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="mb-3">
+                  <div className="d-flex flex-wrap">
+                    <div className="me-3 mb-2">
+                      <Form.Check 
+                        type="radio" 
+                        inline 
+                        label="BTC" 
+                        name="cryptoStatsGroup" 
+                        id="crypto-btc" 
+                        defaultChecked 
+                      />
+                    </div>
+                    <div className="me-3 mb-2">
+                      <Form.Check 
+                        type="radio" 
+                        inline 
+                        label="XRP" 
+                        name="cryptoStatsGroup" 
+                        id="crypto-xrp" 
+                      />
+                    </div>
+                    <div className="me-3 mb-2">
+                      <Form.Check 
+                        type="radio" 
+                        inline 
+                        label="ETH" 
+                        name="cryptoStatsGroup" 
+                        id="crypto-eth" 
+                      />
+                    </div>
+                    <div className="me-3 mb-2">
+                      <Form.Check 
+                        type="radio" 
+                        inline 
+                        label="ZEC" 
+                        name="cryptoStatsGroup" 
+                        id="crypto-zec" 
+                      />
+                    </div>
+                    <div className="me-3 mb-2">
+                      <Form.Check 
+                        type="radio" 
+                        inline 
+                        label="LTC" 
+                        name="cryptoStatsGroup" 
+                        id="crypto-ltc" 
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <div style={{ height: '250px' }}>
+                  <Line data={cryptoStatsData} options={chartOptions} />
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* Market Overview Section */}
+        <Row className="mb-4">
+          <Col lg={8} className="mb-4">
+            <Card className="shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none' }}>
+              <Card.Body>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h5 className="mb-0">Market Overview</h5>
+                  <div>
+                    <Button variant="outline-secondary" size="sm" className="me-2">Week</Button>
+                    <Button variant="primary" size="sm" className="me-2">Month</Button>
+                    <Button variant="outline-secondary" size="sm">Year</Button>
+                  </div>
+                </div>
+                
+                <div className="d-flex justify-content-between mb-3">
+                  <div>
+                    <small className="text-muted d-block">Buy Price</small>
+                    <h4 className="mb-0">${formatNumber(marketData.buyPrice)}</h4>
+                  </div>
+                  <div className="text-end">
+                    <small className="text-muted d-block">Sell Price</small>
+                    <h4 className="mb-0">${formatNumber(marketData.sellPrice)}</h4>
+                  </div>
+                </div>
+                
+                <div style={{ height: '250px' }}>
+                  <Line data={marketData.chartData} options={chartOptions} />
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+          
+          <Col lg={4} className="mb-4">
+            <Card className="shadow-sm h-100" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none' }}>
+              <Card.Body>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h5 className="mb-0">Buy / Sell Orders</h5>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="light" size="sm" id="dropdown-coin">
+                      {orderData.selectedCoin}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>BTC</Dropdown.Item>
+                      <Dropdown.Item>ETH</Dropdown.Item>
+                      <Dropdown.Item>DASH</Dropdown.Item>
+                      <Dropdown.Item>XRP</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+                
+                <Tabs defaultActiveKey="buy" className="mb-3">
+                  <Tab eventKey="buy" title="Buy Orders">
+                    <div className="order-list">
+                      <div className="d-flex text-muted mb-2 small">
+                        <div style={{ width: '33%' }}>Price</div>
+                        <div style={{ width: '33%' }}>Amount</div>
+                        <div style={{ width: '33%' }}>Total</div>
+                      </div>
+                      
+                      {orderData.buy.map((order, index) => (
+                        <div key={index} className="d-flex mb-2 order-item">
+                          <div style={{ width: '33%' }} className="text-success">${order.price}</div>
+                          <div style={{ width: '33%' }}>{order.amount}</div>
+                          <div style={{ width: '33%' }}>${order.total}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </Tab>
+                  <Tab eventKey="sell" title="Sell Orders">
+                    <div className="order-list">
+                      <div className="d-flex text-muted mb-2 small">
+                        <div style={{ width: '33%' }}>Price</div>
+                        <div style={{ width: '33%' }}>Amount</div>
+                        <div style={{ width: '33%' }}>Total</div>
+                      </div>
+                      
+                      {orderData.sell.map((order, index) => (
+                        <div key={index} className="d-flex mb-2 order-item">
+                          <div style={{ width: '33%' }} className="text-danger">${order.price}</div>
+                          <div style={{ width: '33%' }}>{order.amount}</div>
+                          <div style={{ width: '33%' }}>${order.total}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </Tab>
+                </Tabs>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        
+        {/* Notifications Section */}
+        <Row className="mb-4">
+          <Col lg={12}>
+            <Card className="shadow-sm" style={{ borderRadius: '15px', overflow: 'hidden', border: 'none' }}>
+              <Card.Body>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <h5 className="mb-0">Notifications</h5>
+                  <Button variant="link" className="text-primary" style={{ textDecoration: 'none' }}>
+                    View All
+                  </Button>
+                </div>
+                
+                <div className="notification-list">
+                  {userData.notifications.map((notification, index) => (
+                    <div key={index} className="d-flex align-items-center p-2 mb-2" style={{ backgroundColor: notification.read ? 'transparent' : 'rgba(25, 42, 86, 0.05)', borderRadius: '8px' }}>
+                      <div className="me-3" style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: appColors.primary, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                        <i className="fa fa-bell"></i>
+                      </div>
+                      <div>
+                        <p className="mb-0">{notification.message}</p>
+                        <small className="text-muted">{notification.date}</small>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default Dashboard;

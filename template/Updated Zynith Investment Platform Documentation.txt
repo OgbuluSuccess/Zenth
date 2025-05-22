@@ -1,0 +1,297 @@
+# Zynith Investment Platform Documentation
+
+## 1. Overview
+
+Zynith is a modern investment platform that allows users to explore various investment options, including stocks, bonds, real estate, and cryptocurrencies, manage their portfolios, and track investment performance. The platform features a robust role-based access control system with different permission levels for users, administrators, and super administrators, and supports crypto-specific features like wallet integration and real-time price tracking.
+
+## 2. Technical Architecture
+
+### 2.1 Technology Stack
+
+- **Frontend**: React.js (v19.1.0), React Bootstrap, Chart.js
+- **Backend**: Express.js (v5.1.0), Node.js
+- **Database**: MongoDB Atlas
+- **Authentication**: JSON Web Tokens (JWT), bcrypt
+- **Styling**: CSS, Bootstrap 5.3.5
+- **Animation**: animate.css, react spring, wowjs
+- **Crypto Integration**: Web3.js/Ethers.js (for wallet integration), Socket.io (for real-time price updates)
+- **Notifications**: Nodemailer (email), Firebase Cloud Messaging (push notifications)
+- **External APIs**: CoinGecko (crypto price data, market trends)
+
+### 2.2 Project Structure
+
+```
+investment-site/
+├── public/                 # Static assets
+├── server/                 # Backend code
+│   ├── config/             # Database and external API configuration
+│   ├── controllers/        # API controllers
+│   ├── middleware/         # Express middleware (includes crypto transaction validation)
+│   ├── models/             # MongoDB schemas
+│   ├── routes/             # API routes
+│   ├── utils/              # Utility functions (includes crypto price utilities)
+│   └── server.js           # Main server file
+└── src/                    # Frontend code
+    ├── assets/             # Frontend assets
+    ├── components/         # React components
+    ├── contexts/           # React contexts
+    ├── img/                # Images
+    ├── pages/              # Page components
+    │   ├── admin/          # Admin pages
+    │   └── crypto/         # Crypto-specific pages
+    ├── services/           # API service classes (includes crypto services)
+    └── styles/             # CSS styles
+```
+
+## 3. Database Schema
+
+### 3.1 User Model
+
+```javascript
+{
+  name: String,              // User's full name
+  email: String,             // Unique email address
+  username: String,          // Optional username, generated from email if not provided
+  password: String,          // Hashed password
+  role: String,              // 'user', 'admin', or 'super_admin'
+  permissions: [String],     // Array of permission strings
+  createdAt: Date,           // Account creation timestamp
+  walletAddresses: [{        // Array of linked crypto wallet addresses
+    blockchain: String,      // e.g., Ethereum, Binance Smart Chain
+    address: String          // Wallet address
+  }],
+  emailVerified: Boolean     // Email verification status
+}
+```
+
+### 3.2 Investment Model
+
+```javascript
+{
+  name: String,              // Investment name (e.g., Bitcoin, Ethereum)
+  description: String,       // Investment description
+  type: String,              // Type (stocks, bonds, real_estate, cryptocurrency)
+  riskLevel: String,         // Risk level (low, medium, high)
+  minimumInvestment: Number, // Minimum investment amount
+  expectedReturns: String,   // Expected returns description
+  duration: String,          // Investment duration
+  imageUrl: String,          // Image URL for the investment
+  featured: Boolean,         // Whether the investment is featured
+  sectors: [String],         // Industry sectors (e.g., DeFi, NFTs for crypto)
+  regions: [String],         // Geographic regions or 'Global' for crypto
+  performanceHistory: [{     // Historical performance
+    year: Number,
+    returns: Number
+  }],
+  cryptoDetails: {           // Crypto-specific details
+    ticker: String,          // e.g., BTC, ETH
+    blockchain: String,      // e.g., Ethereum, Binance Smart Chain
+    walletCompatibility: [String], // e.g., MetaMask, Trust Wallet
+    stakingAvailable: Boolean,    // Whether staking is supported
+    apy: Number              // Annual Percentage Yield for staking
+  }
+}
+```
+
+### 3.3 Portfolio Model
+
+```javascript
+{
+  user: ObjectId,            // Reference to User model
+  investments: [{            // Array of investments
+    investment: ObjectId,    // Reference to Investment model
+    amount: Number,          // Amount invested (in USD or crypto units)
+    purchaseDate: Date,      // Date of purchase
+    currentValue: Number,    // Current value of investment
+    notes: String,           // Optional notes
+    cryptoDetails: {         // Crypto-specific details
+      walletAddress: String, // Wallet address used for transaction
+      transactionHash: String, // Transaction hash on blockchain
+      coinAmount: Number     // Amount in crypto units (e.g., 0.5 BTC)
+    }
+  }],
+  totalInvestment: Number,   // Total amount invested
+  currentValue: Number,      // Current portfolio value
+  performanceMetrics: {      // Performance metrics
+    overallReturn: Number,   // Overall return percentage
+    annualizedReturn: Number, // Annualized return percentage
+    volatility: Number       // Volatility metric for crypto investments
+  }
+}
+```
+
+## 4. Authentication System
+
+### 4.1 User Registration
+
+- Users can register with name, email, optional username, and password
+- Passwords are hashed using bcrypt before storage
+- JWT tokens are generated upon successful registration
+- Default permissions are assigned based on user role
+- Email verification required post-registration (sent via Nodemailer)
+- Optional wallet address linking during registration
+
+### 4.2 Admin Registration
+
+- Admins can register through the standard registration form
+- An "Admin Registration" accordion section contains additional options
+- To register as an admin, users must provide a secret code:
+  - For regular admin: `zynith-admin-2025`
+  - For super admin: `zynith-super-2025`
+
+### 4.3 Login System
+
+- Users can log in with email and password or social login (Google, Twitter)
+- JWT tokens are used for authentication
+- Token is stored in localStorage for persistent sessions
+- Two-factor authentication (2FA) available (Google Authenticator/Authy), mandatory for crypto transactions
+
+## 5. Role-Based Access Control
+
+### 5.1 User Roles
+
+1. **Regular User**
+   - Can view and manage their own portfolio
+   - Can view available investments (including cryptocurrencies)
+   - Can make investment decisions
+   - Can link crypto wallets and set price alerts
+
+2. **Admin**
+   - All regular user permissions
+   - Access to admin dashboard
+   - Can manage users
+   - Can manage investment options (including crypto)
+   - Can view analytics and transactions (including blockchain transactions)
+
+3. **Super Admin**
+   - All admin permissions
+   - Can configure system-wide settings
+   - Can manage roles and permissions
+   - Can manage multi-signature wallets for platform crypto funds
+   - Has full access to all platform features
+
+### 5.2 Permission Structure
+
+- **User Permissions**: `view_dashboard`, `view_portfolio`, `manage_own_investments`, `view_investments`, `manage_crypto_wallet`, `set_price_alerts`
+- **Admin Permissions**: All user permissions plus `manage_investments`, `view_users`, `manage_users`, `view_transactions`, `view_analytics`, `manage_crypto_investments`
+- **Super Admin Permissions**: All admin permissions plus `manage_transactions`, `manage_system_settings`, `manage_roles`, `manage_multi_sig_wallets`
+
+### 5.3 Protected Routes
+
+- Routes are protected based on user roles
+- Unauthorized access attempts redirect to the login page
+- Admin routes check for admin
+
+ or super admin roles
+- Super admin routes strictly check for super admin role
+- Crypto transaction routes require 2FA verification
+
+## 6. Frontend Structure
+
+### 6.1 Public Pages
+
+- **Home**: Landing page with featured investments (including cryptocurrencies)
+- **Investments**: Browse available investment options
+- **Cryptocurrency Investments**: Dedicated page for crypto options
+- **About**: Information about Zynith platform
+- **Contact**: Contact form and information
+- **Login/Register**: Authentication pages with social login options
+- **Market Overview**: Displays trending coins and market cap data
+
+### 6.2 User Pages
+
+- **Portfolio**: View and manage personal investment portfolio (includes crypto wallet balances)
+- **Price Alerts**: Set and manage cryptocurrency price alerts
+- **Wallet Management**: Link and manage crypto wallets
+
+### 6.3 Admin Pages
+
+- **Admin Dashboard**: Overview with statistics and charts (includes crypto analytics)
+- **User Management**: Manage platform users
+- **Investment Management**: Manage investment options (includes crypto)
+- **System Settings**: Configure system-wide settings (super admin only)
+- **Crypto Transactions**: View and manage blockchain transactions (admin only)
+
+## 7. Backend API Structure
+
+### 7.1 User Routes
+
+- `POST /api/users`: Register a new user
+- `POST /api/users/login`: Authenticate user and get token
+- `POST /api/users/social-login`: Authenticate via social login
+- `GET /api/users/profile`: Get user profile
+- `PUT /api/users/profile`: Update user profile
+- `GET /api/users`: Get all users (admin only)
+- `POST /api/users/check-email`: Check if email exists
+- `POST /api/users/verify-email`: Verify user email
+- `POST /api/users/wallet/connect`: Link crypto wallet address
+
+### 7.2 Investment Routes
+
+- `GET /api/investments`: Get all investments
+- `GET /api/investments/:id`: Get investment by ID
+- `POST /api/investments`: Create new investment (admin only)
+- `PUT /api/investments/:id`: Update investment (admin only)
+- `DELETE /api/investments/:id`: Delete investment (admin only)
+- `GET /api/crypto/prices`: Fetch real-time cryptocurrency prices
+- `GET /api/crypto/market`: Get cryptocurrency market overview
+- `POST /api/crypto/stake`: Stake a cryptocurrency
+
+### 7.3 Portfolio Routes
+
+- `GET /api/portfolio`: Get user's portfolio
+- `POST /api/portfolio`: Add investment to portfolio (includes crypto transactions)
+- `PUT /api/portfolio/:id`: Update portfolio investment
+- `DELETE /api/portfolio/:id`: Remove investment from portfolio
+
+### 7.4 Notification Routes
+
+- `POST /api/notifications/price-alert`: Set cryptocurrency price alert
+- `GET /api/notifications`: Get user notifications
+- `DELETE /api/notifications/:id`: Delete a notification
+
+## 8. Development and Deployment
+
+### 8.1 Development Environment
+
+- `npm run start`: Start the React development server
+- `npm run server`: Start the backend server
+- `npm run dev`: Run both frontend and backend concurrently
+
+### 8.2 Production Deployment
+
+- `npm run build`: Create production build
+- Static files are served from the `build` directory
+- MongoDB Atlas connection: `mongodb+srv://Zynith_db:Zynith_db123@cluster0.199bl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+- Environment variables for CoinGecko API keys and wallet configurations
+
+## 9. Admin Dashboard Features
+
+- **Overview Statistics**: Total users, active users, total investments, portfolio value, total crypto transactions
+- **User Growth Chart**: Visualize user growth over time
+- **Recent Users**: List of recently registered users
+- **Investment Distribution**: Chart showing investment distribution by category (includes crypto)
+- **Recent Transactions**: Latest platform transactions (includes blockchain transactions)
+- **Crypto Analytics**: Top-performing coins, market trends, staking performance
+
+## 10. Security Considerations
+
+- Passwords are hashed using bcrypt
+- JWT tokens for authentication
+- Protected routes with role-based access control
+- Admin secret codes stored securely in environment variables
+- Multi-signature wallets for platform-managed crypto funds
+- 2FA mandatory for crypto-related actions
+- HTTPS for all API calls
+- Rate limiting on crypto-related endpoints
+- Client-side storage for wallet private keys
+- Regular audits for smart contracts (if DeFi integration added)
+
+## 11. Future Enhancements
+
+- Integrate with DeFi protocols (e.g., Uniswap, Aave) for advanced investment options
+- Add support for NFT investments and marketplaces
+- Implement AI-driven investment recommendations based on user risk profiles
+- Enhance mobile app support with crypto wallet integration
+- Add multi-language support for global accessibility
+- Implement advanced portfolio analytics with predictive modeling

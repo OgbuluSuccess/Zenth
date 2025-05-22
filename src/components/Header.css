@@ -1,0 +1,97 @@
+/* Custom Header Styling */
+
+.header-area {
+  background: #4834d4 !important;
+  background: -webkit-linear-gradient(to right, #4834d4, #341f97) !important;
+  background: linear-gradient(to right, #4834d4, #341f97) !important;
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: auto;
+}
+
+.header-area .classy-navbar {
+  height: 90px;
+  padding: 0;
+}
+
+.header-area .nav-brand {
+  font-size: 20px;
+  margin-right: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.header-area .nav-brand img {
+  max-height: 40px;
+  margin-right: 10px;
+}
+
+.header-area .classynav ul li a {
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.header-area .classynav ul li.active a,
+.header-area .classynav ul li:hover a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.header-area .login-btn {
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0 15px;
+  border-radius: 30px;
+  background: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+  height: 45px;
+  line-height: 45px;
+  margin-left: 30px;
+  display: inline-block;
+}
+
+.header-area .login-btn:hover {
+  background: linear-gradient(to left, #21d397 0%, #7450fe 100%);
+  color: #fff;
+}
+
+.header-area .navbarToggler span {
+  background-color: #fff;
+}
+
+.header-area .classynav ul li .dropdown {
+  background-color: #4834d4;
+}
+
+.header-area .classynav ul li .dropdown li a {
+  color: #fff !important;
+}
+
+.header-area .classynav ul li .dropdown li a:hover {
+  color: #21d397 !important;
+}
+
+.header-area .login-btn:hover {
+  background: linear-gradient(to left, #21d397 0%, #7450fe 100%);
+  color: #fff;
+}
+
+.header-area .navbarToggler span {
+  background-color: #fff;
+}
+
+.header-area .classynav ul li .dropdown {
+  background-color: #4834d4;
+}
+
+.header-area .classynav ul li .dropdown li a {
+  color: #fff !important;
+}
+
+.header-area .classynav ul li .dropdown li a:hover {
+  color: #21d397 !important;
+}

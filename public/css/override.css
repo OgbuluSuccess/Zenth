@@ -1,0 +1,39 @@
+/* Override styles with highest specificity */
+
+html body {
+  background: #4834d4 !important;
+  background: -webkit-linear-gradient(to right, #4834d4, #341f97) !important;
+  background: linear-gradient(to right, #4834d4, #341f97) !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+html body .header-area {
+  background: #4834d4 !important;
+  background: -webkit-linear-gradient(to right, #4834d4, #341f97) !important;
+  background: linear-gradient(to right, #4834d4, #341f97) !important;
+  position: relative !important;
+  z-index: 100 !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+html body .header-area .nav-brand {
+  color: #fff !important;
+}
+
+html body .header-area .classynav ul li a {
+  color: #fff !important;
+}
+
+html body .header-area .classy-navbar-toggler .navbarToggler span {
+  background-color: #fff !important;
+}
+
+html body .header-area .login-btn {
+  color: #fff !important;
+  background: linear-gradient(to right, #21d397 0%, #7450fe 100%) !important;
+}
+
+html body .header-area .login-btn:hover {
+  background: linear-gradient(to left, #21d397 0%, #7450fe 100%) !important;
+}
