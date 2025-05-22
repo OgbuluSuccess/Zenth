@@ -86,12 +86,16 @@ const UserManagement = () => {
       setLoading(false);
       // setError('Authentication token not found. Cannot fetch users.'); // Optional: inform user
     }
-  }, [token]);
+  }, [token, user?.role]);
 
+  // Function is now used in openEditUserModal
   const handleEditUser = (userId) => {
-    // Placeholder for edit user functionality
-    console.log('Edit user:', userId);
-    alert(`Edit functionality for user ${userId} to be implemented.`);
+    const userToEdit = users.find(u => u._id === userId);
+    if (userToEdit) {
+      openEditUserModal(userToEdit);
+    } else {
+      console.error('User not found:', userId);
+    }
   };
 
   const handleDeleteUser = async (userId) => {
