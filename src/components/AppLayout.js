@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
-// Footer is imported in specific layouts where needed
+import Footer from './Footer'; // Re-enable the Footer import
 
 const AppLayout = ({ children }) => {
   const { isLoggedIn } = useAuth();
