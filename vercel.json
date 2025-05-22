@@ -21,6 +21,10 @@
       "dest": "/static/$1"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
       "src": "/css/(.*)",
       "dest": "/css/$1"
     },
@@ -48,6 +52,8 @@
   "env": {
     "CI": "false",
     "ESLINT_NO_DEV_ERRORS": "true",
-    "DISABLE_ESLINT_PLUGIN": "true"
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "MONGODB_URI": "@mongodb-uri",
+    "JWT_SECRET": "@jwt-secret"
   }
 }

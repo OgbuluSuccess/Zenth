@@ -4,6 +4,7 @@ const path = require('path');
 // Define paths
 const publicDir = path.join(__dirname, 'public');
 const buildDir = path.join(__dirname, 'build');
+const srcDir = path.join(__dirname, 'src');
 
 // Function to copy public assets to build directory
 async function copyPublicAssets() {
@@ -20,9 +21,23 @@ async function copyPublicAssets() {
       }
     });
     
-    console.log('Public assets copied successfully!');
+    // Create assets directory in build if it doesn't exist
+    const buildAssetsDir = path.join(buildDir, 'assets');
+    await fs.ensureDir(buildAssetsDir);
+    
+    // Copy any assets from src/assets if it exists
+    const srcAssetsDir = path.join(srcDir, 'assets');
+    if (fs.existsSync(srcAssetsDir)) {
+      console.log('Copying src/assets to build/assets...');
+      await fs.copy(srcAssetsDir, buildAssetsDir);
+    }
+    
+    // Create an empty .nojekyll file to prevent GitHub Pages from using Jekyll
+    await fs.writeFile(path.join(buildDir, '.nojekyll'), '');
+    
+    console.log('All assets copied successfully!');
   } catch (err) {
-    console.error('Error copying public assets:', err);
+    console.error('Error copying assets:', err);
     process.exit(1);
   }
 }
