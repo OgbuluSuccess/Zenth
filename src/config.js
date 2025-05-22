@@ -5,6 +5,7 @@
 
 const config = {
   development: {
+    // Explicitly use port 5000 for the backend API
     apiUrl: 'http://localhost:5000/api',
   },
   production: {

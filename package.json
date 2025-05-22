@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "server": "cd server && npm run dev",
-    "dev": "concurrently \"npm run start\" \"npm run server\"",
+    "dev": "concurrently \"cross-env PORT=3000 npm run start\" \"npm run server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -62,6 +62,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
     "postcss": "^8.5.3",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-normalize": "^13.0.1",
