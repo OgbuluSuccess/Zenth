@@ -16,11 +16,11 @@ const Footer = () => {
                   <p>A modern investment platform offering diverse investment options including stocks, bonds, real estate, and cryptocurrencies.</p>
                 </div>
                 <div className="footer-social-info wow fadeInUp" data-wow-delay="0.4s">
-                  <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-                  <a href="#"> <i className="fa fa-twitter" aria-hidden="true"></i></a>
-                  <a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
-                  <a href="#"><i className="fa fa-instagram" aria-hidden="true"></i></a>
-                  <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                  <a href="https://facebook.com" aria-label="Facebook"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                  <a href="https://twitter.com" aria-label="Twitter"> <i className="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="https://plus.google.com" aria-label="Google Plus"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
+                  <a href="https://instagram.com" aria-label="Instagram"><i className="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="https://linkedin.com" aria-label="LinkedIn"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>

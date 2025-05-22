@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
+// Footer is imported in specific layouts where needed
 
 const AppLayout = ({ children }) => {
   const { isLoggedIn } = useAuth();
@@ -31,7 +31,8 @@ const AppLayout = ({ children }) => {
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
   
-  // Check if current route is a protected route
+  // Helper function to check protected routes
+  // eslint-disable-next-line no-unused-vars
   const isProtectedRoute = () => {
     const protectedPaths = ["/dashboard", "/portfolio", "/transactions", "/crypto", "/exchange", "/settings", "/admin/dashboard", "/admin/users", "/admin/content", "/admin/analytics", "/admin/system-config"]; // Added admin paths
     return protectedPaths.some(path => location.pathname.startsWith(path));
