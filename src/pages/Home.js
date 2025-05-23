@@ -48,13 +48,52 @@ const Home = () => {
     const fetchInvestmentPlans = async () => {
       try {
         setLoading(true);
+        console.log('Fetching investment plans from:', `${config.apiUrl}/investment-plans`);
+        
+        // First try to check if the API is reachable
+        try {
+          const rootResponse = await axios.get('http://localhost:5000/api/investment-plans');
+          console.log('API root is reachable:', rootResponse.data);
+          // If we can reach the API directly, use the data from this response
+          const data = rootResponse.data;
+          console.log('Investment plans data received:', data);
+          // Only show active plans and limit to 4 for the featured section
+          const activePlans = data.filter(plan => plan.isActive).slice(0, 4);
+          setInvestmentPlans(activePlans);
+          setError(null);
+          setLoading(false);
+          return; // Exit early since we already have the data
+        } catch (rootErr) {
+          console.error('API root is not reachable:', rootErr);
+          // Continue to try the config.apiUrl approach
+        }
+        
+        // If the direct approach failed, try using the config.apiUrl
         const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
+        console.log('Investment plans data received:', data);
+        
         // Only show active plans and limit to 4 for the featured section
         const activePlans = data.filter(plan => plan.isActive).slice(0, 4);
         setInvestmentPlans(activePlans);
         setError(null);
       } catch (err) {
         console.error('Error fetching investment plans:', err);
+        
+        // More detailed error information
+        if (err.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error('Response data:', err.response.data);
+          console.error('Response status:', err.response.status);
+          console.error('Response headers:', err.response.headers);
+        } else if (err.request) {
+          // The request was made but no response was received
+          console.error('No response received:', err.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error('Request setup error:', err.message);
+        }
+        
         setError('Failed to load investment plans');
       } finally {
         setLoading(false);

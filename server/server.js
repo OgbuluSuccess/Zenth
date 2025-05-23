@@ -10,7 +10,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+// Configure CORS to allow requests from any origin
+app.use(cors({
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Connect to MongoDB
@@ -69,6 +74,14 @@ app.get('/', (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const HOST = process.env.HOST || '0.0.0.0'; // Default to all interfaces if not specified
+const NETWORK_IP = process.env.NETWORK_IP || '172.20.10.3'; // Your machine's network IP
+
+// Listen on the configured host interface
+app.listen(PORT, HOST, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Server accessible at:`);
+  console.log(`- Local: http://localhost:${PORT}`);
+  console.log(`- Network: http://${NETWORK_IP}:${PORT}`);
+  console.log(`- API Base URL: http://${NETWORK_IP}:${PORT}/api`);
 });

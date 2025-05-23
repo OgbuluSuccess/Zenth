@@ -20,6 +20,14 @@ async function copyPublicAssets() {
         return path.basename(src) !== 'index.html';
       }
     });
+
+    // Specifically ensure the img directory is copied
+    const publicImgDir = path.join(publicDir, 'img');
+    const buildImgDir = path.join(buildDir, 'img');
+    if (fs.existsSync(publicImgDir)) {
+      console.log('Ensuring img directory is copied to build...');
+      await fs.copy(publicImgDir, buildImgDir);
+    }
     
     // Create assets directory in build if it doesn't exist
     const buildAssetsDir = path.join(buildDir, 'assets');

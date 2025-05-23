@@ -22,6 +22,11 @@ import './index.css';
 
 // Import the App component
 import App from './App';
+// import SimpleApp from './SimpleApp';
+// import TestApp from './TestApp';
+// import FullTestApp from './FullTestApp';
+// import LayoutTestApp from './LayoutTestApp';
+// import DebugApp from './DebugApp';
 import reportWebVitals from './reportWebVitals';
 
 // Import template CSS files

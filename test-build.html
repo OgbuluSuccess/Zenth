@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Build Assets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+    }
+    .asset-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .asset-item {
+      text-align: center;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Build Assets</h1>
+  <p>This page tests if your assets are being correctly included in the build.</p>
+  
+  <h2>Logo</h2>
+  <div class="asset-container">
+    <div class="asset-item">
+      <img src="img/core-img/logo.png" alt="Logo">
+      <p>Logo</p>
+    </div>
+  </div>
+
+  <h2>Core Images</h2>
+  <div class="asset-container">
+    <div class="asset-item">
+      <img src="img/core-img/about.png" alt="About">
+      <p>About Image</p>
+    </div>
+    <div class="asset-item">
+      <img src="img/core-img/about2.png" alt="About 2">
+      <p>About Image 2</p>
+    </div>
+  </div>
+
+  <h2>SVG Images</h2>
+  <div class="asset-container">
+    <div class="asset-item">
+      <img src="img/svg/ai-illustration.svg" alt="AI Illustration">
+      <p>AI Illustration</p>
+    </div>
+    <div class="asset-item">
+      <img src="img/svg/benefits-bg.svg" alt="Benefits Background">
+      <p>Benefits Background</p>
+    </div>
+  </div>
+
+  <h2>Service Images</h2>
+  <div class="asset-container">
+    <div class="asset-item">
+      <img src="img/services/1.svg" alt="Service 1">
+      <p>Service 1</p>
+    </div>
+    <div class="asset-item">
+      <img src="img/services/2.svg" alt="Service 2">
+      <p>Service 2</p>
+    </div>
+  </div>
+
+  <script>
+    // Check if images loaded successfully
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img');
+      let loadedCount = 0;
+      let errorCount = 0;
+      
+      images.forEach(img => {
+        img.addEventListener('load', () => {
+          loadedCount++;
+          if (loadedCount + errorCount === images.length) {
+            console.log(`Images loaded: ${loadedCount}, Failed: ${errorCount}`);
+          }
+        });
+        
+        img.addEventListener('error', () => {
+          errorCount++;
+          img.style.border = '2px solid red';
+          const errorText = document.createElement('p');
+          errorText.textContent = 'Failed to load';
+          errorText.style.color = 'red';
+          img.parentNode.appendChild(errorText);
+          
+          if (loadedCount + errorCount === images.length) {
+            console.log(`Images loaded: ${loadedCount}, Failed: ${errorCount}`);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

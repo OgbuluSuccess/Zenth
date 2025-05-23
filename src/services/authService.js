@@ -22,13 +22,51 @@ export const register = async (userData) => {
 // Login user
 export const login = async (email, password) => {
   try {
+    console.log('Attempting login with API URL:', API_URL);
+    
+    // First check if the API is reachable
+    try {
+      // Try direct access to the login endpoint
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      console.log('Login response received:', response.data);
+      
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+      }
+      return response.data;
+    } catch (rootErr) {
+      console.error('Direct API access failed, trying configured URL:', rootErr);
+      // Continue with the configured API URL if direct access fails
+    }
+    
+    // If direct access failed, try using the configured API URL
     const response = await axios.post(`${API_URL}/auth/login`, { email, password });
+    console.log('Login response received:', response.data);
+    
     if (response.data.token) {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
     }
     return response.data;
   } catch (error) {
+    console.error('Login error:', error);
+    
+    // More detailed error information
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('No response received:', error.request);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('Request setup error:', error.message);
+    }
+    
     throw error.response ? error.response.data : { message: 'Network error' };
   }
 };
