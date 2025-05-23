@@ -29,6 +29,10 @@ git push
 
 ### 3. Add Environment Variables
 
+In the Vercel project settings, add the following environment variables:
+
+- `MONGODB_URI`: `mongodb+srv://investment:1Password@cluster0.yihwhok.mongodb.net/investment`
+- `JWT_SECRET`: `your_jwt_secret_key` (use a strong, secure value)
 
 ### 4. Deploy
 
