@@ -17,15 +17,25 @@ app.use(express.json());
 // Serve static files from the React build
 app.use(express.static(path.join(__dirname, 'build')));
 
+// Configure mongoose options globally
+mongoose.set('bufferTimeoutMS', 30000); // Increase buffer timeout to 30 seconds (default is 10 seconds)
+mongoose.set('maxTimeMS', 60000); // Set max time for operations to 60 seconds
+
 // Connect to MongoDB
 const MONGODB_URI = process.env.MONGODB_URI;
 if (MONGODB_URI) {
+  console.log('Attempting to connect to MongoDB...');
+  
+  // Enhanced MongoDB connection options
   mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000,
-    socketTimeoutMS: 45000,
-    connectTimeoutMS: 30000
+    serverSelectionTimeoutMS: 60000, // Increased from 30000 to 60000
+    socketTimeoutMS: 90000, // Increased from 45000 to 90000
+    connectTimeoutMS: 60000, // Increased from 30000 to 60000
+    heartbeatFrequencyMS: 30000, // Add heartbeat to keep connection alive
+    // Disable auto-indexing in production for better performance
+    autoIndex: process.env.NODE_ENV !== 'production'
   })
   .then(() => {
     console.log('MongoDB connected successfully');
@@ -115,26 +125,45 @@ function setupApiRoutes() {
   // Debug endpoint for investment plans
   app.get('/api/debug/investment-plans', async (req, res) => {
     try {
+      // Check MongoDB connection status
+      if (mongoose.connection.readyState !== 1) {
+        return res.status(500).json({
+          success: false,
+          error: 'MongoDB not connected',
+          readyState: mongoose.connection.readyState
+        });
+      }
+      
       // Check if the InvestmentPlan model exists
       const InvestmentPlan = mongoose.models.InvestmentPlan || require('./server/models/InvestmentPlan');
       
-      // Try to get all investment plans without any filters
-      const plans = await InvestmentPlan.find({}).lean();
+      console.log('Attempting to fetch investment plans with timeout settings...');
+      
+      // Try to get all investment plans with explicit timeout
+      const plans = await InvestmentPlan.find({})
+        .maxTimeMS(30000) // Set 30 second timeout for this query
+        .lean() // Use lean for better performance
+        .exec(); // Explicitly execute the query
+      
+      console.log(`Successfully fetched ${plans ? plans.length : 0} investment plans`);
       
       res.json({
         success: true,
-        count: plans.length,
-        plans: plans.map(plan => ({
+        count: plans ? plans.length : 0,
+        mongodbConnected: mongoose.connection.readyState === 1,
+        plans: plans ? plans.map(plan => ({
           id: plan._id,
           name: plan.name,
           isActive: plan.isActive
-        }))
+        })) : []
       });
     } catch (error) {
       console.error('Error in debug investment plans:', error);
       res.status(500).json({
         success: false,
         error: error.message,
+        mongodbConnected: mongoose.connection.readyState === 1,
+        mongodbReadyState: mongoose.connection.readyState,
         stack: process.env.NODE_ENV === 'production' ? null : error.stack
       });
     }

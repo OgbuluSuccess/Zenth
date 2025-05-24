@@ -61,8 +61,30 @@ const createInvestmentPlan = asyncHandler(async (req, res) => {
 // @route   GET /api/investment-plans
 // @access  Public (or Private if only for logged-in users)
 const getInvestmentPlans = asyncHandler(async (req, res) => {
-  const investmentPlans = await InvestmentPlan.find({ isActive: true }).sort({ createdAt: -1 }); // Show newest first
-  res.json(investmentPlans);
+  console.log('Fetching investment plans...');
+  
+  try {
+    // Use explicit timeout, lean for better performance, and sort by creation date
+    const investmentPlans = await InvestmentPlan.find({})
+      .maxTimeMS(30000) // Set 30 second timeout for this query
+      .lean() // Use lean for better performance
+      .sort({ createdAt: -1 }); // Show newest first
+    
+    console.log(`Successfully fetched ${investmentPlans.length} investment plans`);
+    
+    // Return in a standard format that matches what the frontend expects
+    res.json({
+      success: true,
+      data: investmentPlans
+    });
+  } catch (error) {
+    console.error('Error fetching investment plans:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch investment plans',
+      error: error.message
+    });
+  }
 });
 
 // @desc    Get investment plan by ID
