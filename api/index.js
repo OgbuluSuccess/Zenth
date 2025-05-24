@@ -1,21 +1,21 @@
 // Vercel API Route - Main entry point
-import { createServer } from 'http';
-import { parse } from 'url';
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const { createServer } = require('http');
+const { parse } = require('url');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 // Import routes
-import authRoutes from '../server/routes/auth.js';
-import userRoutes from '../server/routes/userRoutes.js';
-import investmentPlanRoutes from '../server/routes/investmentPlanRoutes.js';
-import rewardRoutes from '../server/routes/rewardRoutes.js';
-import referralRoutes from '../server/routes/referralRoutes.js';
-import investmentRoutes from '../server/routes/investmentRoutes.js';
-import referralSettingRoutes from '../server/routes/referralSettingRoutes.js';
-import transactionRoutes from '../server/routes/transactionRoutes.js';
-import walletRoutes from '../server/routes/walletRoutes.js';
+const authRoutes = require('../server/routes/auth');
+const userRoutes = require('../server/routes/userRoutes');
+const investmentPlanRoutes = require('../server/routes/investmentPlanRoutes');
+const rewardRoutes = require('../server/routes/rewardRoutes');
+const referralRoutes = require('../server/routes/referralRoutes');
+const investmentRoutes = require('../server/routes/investmentRoutes');
+const referralSettingRoutes = require('../server/routes/referralSettingRoutes');
+const transactionRoutes = require('../server/routes/transactionRoutes');
+const walletRoutes = require('../server/routes/walletRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -70,5 +70,15 @@ const server = createServer((req, res) => {
   app(req, res);
 });
 
+// If running directly (not through Vercel)
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Server accessible at: http://localhost:${PORT}`);
+    console.log('Server listening on all network interfaces (0.0.0.0)');
+  });
+}
+
 // Export the Express API
-export default server;
+module.exports = server;
