@@ -199,8 +199,17 @@ const DashboardNew = () => {
       try {
         setLoadingPlans(true);
         // Using our apiService with authentication token
-        const { data } = await api.get('/investment-plans'); 
-        setInvestmentPlans(data);
+        const response = await api.get('/investment-plans'); 
+        // Make sure we're setting an array to investmentPlans
+        if (response.data && Array.isArray(response.data)) {
+          setInvestmentPlans(response.data);
+        } else if (response.data && Array.isArray(response.data.data)) {
+          setInvestmentPlans(response.data.data);
+        } else {
+          console.error('Investment plans response is not in expected format:', response.data);
+          setInvestmentPlans([]);
+          setPlanError('Received invalid data format from server');
+        }
         setPlanError(null);
       } catch (error) {
         console.error("Error fetching investment plans:", error);
@@ -602,6 +611,10 @@ const DashboardNew = () => {
                     <p className="text-sm text-red-700 font-medium">{planError}</p>
                   </div>
                 </div>
+              </div>
+            ) : !Array.isArray(investmentPlans) ? (
+              <div className="text-center py-8">
+                <p className="text-gray-600">Error loading investment plans. Please refresh the page.</p>
               </div>
             ) : investmentPlans.length === 0 ? (
               <div className="text-center py-8">

@@ -13,9 +13,8 @@ const environmentConfig = {
     apiUrl: process.env.REACT_APP_DEV_API_URL || 'http://172.20.10.3:5000/api',
   },
   production: {
-    // In production (AWS), use the configured API URL from environment variables
-    // The API URL already includes the /api path
-    apiUrl: process.env.REACT_APP_PROD_API_URL || 'https://q70cx5xfkl.execute-api.eu-north-1.amazonaws.com/dev/api',
+    // For Render deployment, use the same domain but with /api path
+    apiUrl: process.env.REACT_APP_PROD_API_URL || '/api',
   },
 };
 
