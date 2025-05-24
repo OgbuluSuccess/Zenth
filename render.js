@@ -46,6 +46,12 @@ if (MONGODB_URI) {
 // Function to set up API routes
 function setupApiRoutes() {
   try {
+    // Add request logging middleware
+    app.use((req, res, next) => {
+      console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+      next();
+    });
+    
     // Import routes
     const authRoutes = require('./server/routes/auth');
     const userRoutes = require('./server/routes/userRoutes');
@@ -103,6 +109,46 @@ function setupApiRoutes() {
       environment: process.env.NODE_ENV || 'development',
       port: process.env.PORT || '10000 (default)',
       jwtSecret: process.env.JWT_SECRET ? 'Configured (hidden for security)' : 'Not configured'
+    });
+  });
+
+  // Debug endpoint for investment plans
+  app.get('/api/debug/investment-plans', async (req, res) => {
+    try {
+      // Check if the InvestmentPlan model exists
+      const InvestmentPlan = mongoose.models.InvestmentPlan || require('./server/models/InvestmentPlan');
+      
+      // Try to get all investment plans without any filters
+      const plans = await InvestmentPlan.find({}).lean();
+      
+      res.json({
+        success: true,
+        count: plans.length,
+        plans: plans.map(plan => ({
+          id: plan._id,
+          name: plan.name,
+          isActive: plan.isActive
+        }))
+      });
+    } catch (error) {
+      console.error('Error in debug investment plans:', error);
+      res.status(500).json({
+        success: false,
+        error: error.message,
+        stack: process.env.NODE_ENV === 'production' ? null : error.stack
+      });
+    }
+  });
+
+  // Error handling middleware
+  app.use((err, req, res, next) => {
+    console.error('API Error:', err.stack);
+    
+    // Return error response
+    res.status(err.statusCode || 500).json({
+      success: false,
+      error: err.message || 'Server Error',
+      stack: process.env.NODE_ENV === 'production' ? null : err.stack
     });
   });
 
