@@ -50,30 +50,27 @@ const Home = () => {
         setLoading(true);
         console.log('Fetching investment plans from:', `${config.apiUrl}/investment-plans`);
         
-        // First try to check if the API is reachable
-        try {
-          const rootResponse = await axios.get('http://localhost:5000/api/investment-plans');
-          console.log('API root is reachable:', rootResponse.data);
-          // If we can reach the API directly, use the data from this response
-          const data = rootResponse.data;
-          console.log('Investment plans data received:', data);
-          // Only show active plans and limit to 4 for the featured section
-          const activePlans = data.filter(plan => plan.isActive).slice(0, 4);
-          setInvestmentPlans(activePlans);
-          setError(null);
-          setLoading(false);
-          return; // Exit early since we already have the data
-        } catch (rootErr) {
-          console.error('API root is not reachable:', rootErr);
-          // Continue to try the config.apiUrl approach
+        // Make the API call using the configured API URL
+        const response = await axios.get(`${config.apiUrl}/investment-plans`);
+        console.log('Investment plans response received:', response);
+        
+        let activePlans = [];
+        // Check if the response has the expected structure
+        if (response.data && response.data.success && Array.isArray(response.data.data)) {
+          // Handle AWS Lambda/Amplify response format {success: true, data: [...]}
+          console.log('Investment plans data extracted (success/data format):', response.data.data);
+          activePlans = response.data.data.filter(plan => plan.isActive || plan.status === 'active').slice(0, 4);
+        } else if (Array.isArray(response.data)) {
+          // Handle direct array response format from local server
+          console.log('Investment plans data extracted (direct array):', response.data);
+          activePlans = response.data.filter(plan => plan.isActive || plan.status === 'active').slice(0, 4);
+        } else {
+          // If the response doesn't have any expected structure, log an error
+          console.error('Unexpected API response structure:', response.data);
+          throw new Error('Unexpected API response structure');
         }
         
-        // If the direct approach failed, try using the config.apiUrl
-        const { data } = await axios.get(`${config.apiUrl}/investment-plans`);
-        console.log('Investment plans data received:', data);
-        
-        // Only show active plans and limit to 4 for the featured section
-        const activePlans = data.filter(plan => plan.isActive).slice(0, 4);
+        console.log('Active plans filtered:', activePlans);
         setInvestmentPlans(activePlans);
         setError(null);
       } catch (err) {
