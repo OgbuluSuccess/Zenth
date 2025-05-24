@@ -94,6 +94,18 @@ function setupApiRoutes() {
     });
   });
 
+  // Debug endpoint to check MongoDB connection and environment variables
+  app.get('/api/debug', (req, res) => {
+    res.json({
+      success: true,
+      mongodbConnected: mongoose.connection.readyState === 1,
+      mongodbUri: process.env.MONGODB_URI ? 'Configured (hidden for security)' : 'Not configured',
+      environment: process.env.NODE_ENV || 'development',
+      port: process.env.PORT || '10000 (default)',
+      jwtSecret: process.env.JWT_SECRET ? 'Configured (hidden for security)' : 'Not configured'
+    });
+  });
+
   // Catch-all route to serve the React app for any other routes
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
