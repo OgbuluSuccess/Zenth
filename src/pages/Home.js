@@ -48,10 +48,13 @@ const Home = () => {
     const fetchInvestmentPlans = async () => {
       try {
         setLoading(true);
-        console.log('Fetching investment plans from:', `${config.apiUrl}/investment-plans`);
+        // Import the configured axios instance
+        const api = require('../services/axiosConfig').default;
         
-        // Make the API call using the configured API URL
-        const response = await axios.get(`${config.apiUrl}/investment-plans`);
+        console.log('Fetching investment plans from API');
+        
+        // Make the API call using the configured axios instance
+        const response = await api.get('/investment-plans');
         console.log('Investment plans response received:', response);
         
         let activePlans = [];
