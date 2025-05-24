@@ -37,7 +37,7 @@
     "start": "react-scripts start",
     "server": "cd server && npm run dev",
     "dev": "concurrently \"cross-env PORT=3000 npm run start\" \"npm run server\"",
-    "build": "CI=false react-scripts build && node build-script.js",
+    "build": "npm install && CI=false react-scripts build && node build-script.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "install-all": "npm install && cd server && npm install"
